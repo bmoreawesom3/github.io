@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ============================================================
+       EDIT ME: page title + description (shows in browser tab &
+       search results / link previews)
+       ============================================================ -->
+  <title>Your Name — Portfolio</title>
+  <meta name="description" content="Projects and work by Your Name — a short one-line description of what you do." />
+
+  <!-- Favicon (edit assets/favicon.svg to change the little tab icon) -->
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+
+  <!-- Fonts: Space Grotesk (headings) · Inter (body) · Space Mono (labels/data) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+  <!-- Skip link for keyboard / screen-reader users -->
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- ============================================================
+       HEADER / NAV
+       ============================================================ -->
+  <header class="site-header" id="siteHeader">
+    <div class="wrap header-inner">
+      <a href="#top" class="brand">
+        <span class="brand-mark" aria-hidden="true">◆</span>
+        <span class="brand-name">Your Name</span>
+      </a>
+
+      <nav class="nav" id="primaryNav" aria-label="Primary">
+        <a href="#school" class="nav-link">School</a>
+        <a href="#professional" class="nav-link">Professional</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#contact" class="nav-link nav-link--cta">Contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="icon-btn" id="themeToggle" type="button" aria-label="Switch to dark theme">
+          <!-- icon swapped by JS -->
+          <span class="theme-icon" aria-hidden="true">☀</span>
+        </button>
+        <button class="icon-btn menu-btn" id="menuToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="primaryNav">
+          <span class="menu-bars" aria-hidden="true"><span></span><span></span><span></span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ============================================================
+         HERO
+         ============================================================ -->
+    <section class="hero" id="top">
+      <div class="wrap">
+        <p class="eyebrow" data-reveal>Portfolio · Updated 2026</p>
+        <h1 class="hero-title" data-reveal>
+          I build things.<br />Here's the work.
+        </h1>
+        <p class="hero-lead" data-reveal>
+          One or two sentences about who you are and what you do — your focus,
+          your discipline, the kind of problems you like solving. Keep it plain
+          and specific.
+        </p>
+        <div class="hero-actions" data-reveal>
+          <a href="#professional" class="btn btn--primary">View work</a>
+          <a href="#contact" class="btn btn--ghost">Get in touch</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SCHOOL SECTION
+         Duplicate a <article class="card"> block to add a project.
+         Project IDs use S-01, S-02… (S = school).
+         ============================================================ -->
+    <section class="section" id="school">
+      <div class="wrap">
+        <header class="section-head" data-reveal>
+          <p class="eyebrow">School work</p>
+          <h2 class="section-title">Coursework &amp; academic projects</h2>
+          <p class="section-desc">
+            Projects from classes, labs, and personal study. Swap this copy for
+            a line about what you were learning or exploring.
+          </p>
+        </header>
+
+        <div class="grid">
+          <!-- CARD (copy this whole <article> to add another project) -->
+          <article class="card" data-reveal>
+            <a class="card-cover card-cover--school" href="#" aria-label="Open project">
+              <span class="card-id">S-01</span>
+              <!-- To use a screenshot instead of the pattern, replace the
+                   line above with:
+                   <img src="assets/your-image.png" alt="Project screenshot" /> -->
+            </a>
+            <div class="card-body">
+              <h3 class="card-title">Project title</h3>
+              <p class="card-desc">
+                A short description of what the project does and what you built
+                or learned. One or two sentences is plenty.
+              </p>
+              <ul class="tags" aria-label="Tech used">
+                <li>Python</li>
+                <li>NumPy</li>
+                <li>Matplotlib</li>
+              </ul>
+              <div class="card-foot">
+                <span class="card-meta">2025 · Course name</span>
+                <span class="card-links">
+                  <a href="#">Code ↗</a>
+                  <a href="#">Report ↗</a>
+                </span>
+              </div>
+            </div>
+          </article>
+
+          <article class="card" data-reveal>
+            <a class="card-cover card-cover--school" href="#" aria-label="Open project">
+              <span class="card-id">S-02</span>
+            </a>
+            <div class="card-body">
+              <h3 class="card-title">Project title</h3>
+              <p class="card-desc">
+                Another project. Describe the problem, your approach, and the
+                result. Link to a repo, a write-up, or a demo below.
+              </p>
+              <ul class="tags" aria-label="Tech used">
+                <li>C++</li>
+                <li>Data structures</li>
+              </ul>
+              <div class="card-foot">
+                <span class="card-meta">2024 · Course name</span>
+                <span class="card-links">
+                  <a href="#">Code ↗</a>
+                </span>
+              </div>
+            </div>
+          </article>
+
+          <article class="card" data-reveal>
+            <a class="card-cover card-cover--school" href="#" aria-label="Open project">
+              <span class="card-id">S-03</span>
+            </a>
+            <div class="card-body">
+              <h3 class="card-title">Project title</h3>
+              <p class="card-desc">
+                A group project, a capstone, or a class assignment you're proud
+                of. Mention your specific role if it was a team effort.
+              </p>
+              <ul class="tags" aria-label="Tech used">
+                <li>JavaScript</li>
+                <li>React</li>
+              </ul>
+              <div class="card-foot">
+                <span class="card-meta">2024 · Team of 4</span>
+                <span class="card-links">
+                  <a href="#">Code ↗</a>
+                  <a href="#">Demo ↗</a>
+                </span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         PROFESSIONAL SECTION
+         Project IDs use P-01, P-02… (P = professional).
+         ============================================================ -->
+    <section class="section section--alt" id="professional">
+      <div class="wrap">
+        <header class="section-head" data-reveal>
+          <p class="eyebrow">Professional work</p>
+          <h2 class="section-title">Work &amp; client projects</h2>
+          <p class="section-desc">
+            Things you shipped on the job, freelance, or for real users. Note
+            impact where you can — what changed because this existed.
+          </p>
+        </header>
+
+        <div class="grid">
+          <article class="card" data-reveal>
+            <a class="card-cover card-cover--pro" href="#" aria-label="Open project">
+              <span class="card-id">P-01</span>
+            </a>
+            <div class="card-body">
+              <h3 class="card-title">Project title</h3>
+              <p class="card-desc">
+                What you built, who it was for, and the outcome. If it's under
+                NDA, describe the shape of the work without the specifics.
+              </p>
+              <ul class="tags" aria-label="Tech used">
+                <li>TypeScript</li>
+                <li>Node</li>
+                <li>PostgreSQL</li>
+              </ul>
+              <div class="card-foot">
+                <span class="card-meta">2026 · Lead developer</span>
+                <span class="card-links">
+                  <a href="#">Live ↗</a>
+                  <a href="#">Case study ↗</a>
+                </span>
+              </div>
+            </div>
+          </article>
+
+          <article class="card" data-reveal>
+            <a class="card-cover card-cover--pro" href="#" aria-label="Open project">
+              <span class="card-id">P-02</span>
+            </a>
+            <div class="card-body">
+              <h3 class="card-title">Project title</h3>
+              <p class="card-desc">
+                A feature, service, or product you contributed to. Focus on your
+                part and the result it drove.
+              </p>
+              <ul class="tags" aria-label="Tech used">
+                <li>Go</li>
+                <li>Docker</li>
+                <li>AWS</li>
+              </ul>
+              <div class="card-foot">
+                <span class="card-meta">2025 · Backend</span>
+                <span class="card-links">
+                  <a href="#">Live ↗</a>
+                </span>
+              </div>
+            </div>
+          </article>
+
+          <article class="card" data-reveal>
+            <a class="card-cover card-cover--pro" href="#" aria-label="Open project">
+              <span class="card-id">P-03</span>
+            </a>
+            <div class="card-body">
+              <h3 class="card-title">Project title</h3>
+              <p class="card-desc">
+                Round out the section with a third piece. A consistent shape
+                across cards makes the whole page feel considered.
+              </p>
+              <ul class="tags" aria-label="Tech used">
+                <li>Swift</li>
+                <li>iOS</li>
+              </ul>
+              <div class="card-foot">
+                <span class="card-meta">2024 · Freelance</span>
+                <span class="card-links">
+                  <a href="#">App Store ↗</a>
+                </span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         ABOUT
+         ============================================================ -->
+    <section class="section" id="about">
+      <div class="wrap about">
+        <header class="section-head" data-reveal>
+          <p class="eyebrow">About</p>
+          <h2 class="section-title">A little about me</h2>
+        </header>
+        <div class="about-grid">
+          <div class="about-text" data-reveal>
+            <p>
+              Write a short bio here. Where you're studying or working, what
+              you're into, what you're looking for next. Two or three short
+              paragraphs is a good length — enough to be human, short enough to
+              read.
+            </p>
+            <p>
+              You can mention interests outside of code too. It makes the page
+              feel like a person rather than a résumé.
+            </p>
+          </div>
+          <aside class="about-facts" data-reveal>
+            <dl>
+              <div><dt>Based in</dt><dd>Your city</dd></div>
+              <div><dt>Focus</dt><dd>Your main area</dd></div>
+              <div><dt>Studying</dt><dd>Your program</dd></div>
+              <div><dt>Status</dt><dd>Open to opportunities</dd></div>
+            </dl>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================================================
+       CONTACT / FOOTER
+       ============================================================ -->
+  <footer class="site-footer" id="contact">
+    <div class="wrap footer-inner">
+      <div class="footer-cta" data-reveal>
+        <p class="eyebrow">Contact</p>
+        <h2 class="footer-title">Let's talk.</h2>
+        <a href="mailto:you@example.com" class="footer-email">you@example.com</a>
+      </div>
+      <ul class="footer-links" aria-label="Elsewhere">
+        <li><a href="#">GitHub ↗</a></li>
+        <li><a href="#">LinkedIn ↗</a></li>
+        <li><a href="#">Résumé ↗</a></li>
+      </ul>
+    </div>
+    <div class="wrap footer-colophon">
+      <span>© <span id="year">2026</span> Your Name</span>
+      <span class="mono">Built from scratch · Hosted on GitHub Pages</span>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
