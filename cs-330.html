@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Marks that JS is available, so content-reveal animations can run.
+       Without JS, content simply shows (see .js rules in style.css). -->
+  <script>document.documentElement.classList.add("js");</script>
+
+  <title>CS-330: Computational Graphics — George Kaline III</title>
+  <meta name="description" content="CS-330 Computational Graphics & Visualization: a 3D scene of everyday objects built in C++ and OpenGL with textures, lighting, and a navigable camera." />
+
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" id="siteHeader">
+    <div class="wrap header-inner">
+      <a href="index.html" class="brand">
+        <span class="brand-mark" aria-hidden="true">◆</span>
+        <span class="brand-name">George Kaline III</span>
+      </a>
+      <nav class="nav" id="primaryNav" aria-label="Primary">
+        <a href="index.html#school" class="nav-link">School</a>
+        <a href="index.html#professional" class="nav-link">Professional</a>
+        <a href="index.html#about" class="nav-link">About</a>
+        <a href="index.html#contact" class="nav-link nav-link--cta">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-btn" id="themeToggle" type="button" aria-label="Switch to dark theme">
+          <span class="theme-icon" aria-hidden="true">☀</span>
+        </button>
+        <button class="icon-btn menu-btn" id="menuToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="primaryNav">
+          <span class="menu-bars" aria-hidden="true"><span></span><span></span><span></span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="detail-hero" id="top">
+      <div class="wrap">
+        <a href="index.html#school" class="back-link" data-reveal>← Back to portfolio</a>
+        <p class="eyebrow" data-reveal>School · Computational Graphics</p>
+        <h1 class="hero-title" data-reveal>CS-330: Computational Graphics &amp; Visualization</h1>
+        <p class="detail-lead" data-reveal>
+          A 3D scene recreated in C++ and OpenGL — modeling a set of everyday
+          objects with textures and lighting, and a fully navigable free-look
+          camera that switches between perspective and orthographic views.
+        </p>
+
+        <dl class="detail-meta" data-reveal>
+          <div><dt>Course</dt><dd>CS-330 · Computational Graphics &amp; Visualization</dd></div>
+          <div><dt>Type</dt><dd>School project</dd></div>
+          <div><dt>Focus</dt><dd>C++ · OpenGL</dd></div>
+          <div><dt>Year</dt><dd>2024</dd></div>
+          <div><dt>Repository</dt><dd><a href="https://github.com/bmoreawesom3/CS330" target="_blank" rel="noopener">GitHub ↗</a></dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap prose" data-reveal>
+        <p>
+          The scene recreates four objects from everyday life — a pyramid, a cube,
+          a cylinder, and the kitchen table they sat on (a plane). They came from
+          my daughter's toys, already on the table, which made them a natural fit:
+          simple enough to model cleanly while still exercising the full pipeline
+          of vertices, colors, and texture coordinates.
+        </p>
+
+        <h3>How it was built</h3>
+        <p>
+          The pyramid, cube, and plane are drawn with <code>GL_TRIANGLES</code>,
+          while the cylinder uses <code>GL_TRIANGLE_FAN</code> and
+          <code>GL_TRIANGLE_STRIP</code>. Each object defines its own vertices,
+          indices, color formatting, and texture-coordinate data. Navigation is
+          handled through seven key functions plus mouse input: six standard camera
+          movements and a seventh that switches between perspective and orthographic
+          projection.
+        </p>
+
+        <h3>Camera controls</h3>
+        <ul class="bullets">
+          <li><strong>W / A / S / D</strong> — move forward, left, back, and right.</li>
+          <li><strong>Q / E</strong> — move up and down along the Y axis.</li>
+          <li><strong>P</strong> — hold to switch from perspective to an orthographic view.</li>
+          <li><strong>Mouse</strong> — free-look camera; scroll wheel zooms in and out.</li>
+        </ul>
+
+        <h3>Reflection</h3>
+        <p>
+          I approached each function as a main task with smaller subtasks beneath
+          it, which made the program easier to navigate — I could collapse or expand
+          sections instead of scrolling through the whole file. I kept the objects
+          together in one place rather than splitting them across classes, because
+          that made the code easier for me to follow, and I leaned on thorough
+          comments and color-coded highlighting to keep the sections readable.
+          One idea I'd build on next is a height-adjustment setting for the camera,
+          so a viewer could walk through the scene from their own eye level rather
+          than the fixed elevated default.
+        </p>
+      </div>
+    </section>
+
+    <section class="section section--alt">
+      <div class="wrap">
+        <header class="section-head" data-reveal>
+          <p class="eyebrow">Artifacts</p>
+          <h2 class="section-title">Code &amp; deliverables</h2>
+          <p class="section-desc">The OpenGL project source and the project reflection.</p>
+        </header>
+        <div class="artifacts">
+          <a class="artifact" data-reveal href="https://github.com/bmoreawesom3/CS330/tree/main/Ongoing%20project" target="_blank" rel="noopener">
+            <span class="artifact-type">CODE</span>
+            <span><span class="artifact-name">3D scene project</span><span class="artifact-note">The full OpenGL project folder</span></span>
+            <span class="arrow" aria-hidden="true">↗</span>
+          </a>
+          <a class="artifact" data-reveal href="https://github.com/bmoreawesom3/CS330/blob/main/Ongoing%20project/Mod8.cpp" target="_blank" rel="noopener">
+            <span class="artifact-type">CPP</span>
+            <span><span class="artifact-name">Main application</span><span class="artifact-note">Mod8.cpp — scene, rendering, and input</span></span>
+            <span class="arrow" aria-hidden="true">↗</span>
+          </a>
+          <a class="artifact" data-reveal href="https://github.com/bmoreawesom3/CS330/blob/main/Ongoing%20project/Cylinder.cpp" target="_blank" rel="noopener">
+            <span class="artifact-type">CPP</span>
+            <span><span class="artifact-name">Cylinder class</span><span class="artifact-note">Cylinder.cpp — triangle-strip geometry</span></span>
+            <span class="arrow" aria-hidden="true">↗</span>
+          </a>
+          <a class="artifact" data-reveal href="https://github.com/bmoreawesom3/CS330/blob/main/Week%207.docx" target="_blank" rel="noopener">
+            <span class="artifact-type">DOCX</span>
+            <span><span class="artifact-name">Project reflection</span><span class="artifact-note">Week 7 — design and navigation write-up</span></span>
+            <span class="arrow" aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap prose" data-reveal>
+        <h3>Skills &amp; concepts</h3>
+        <ul class="tags" aria-label="Skills" style="margin-top:1rem;">
+          <li>C++</li>
+          <li>OpenGL</li>
+          <li>GLSL shaders</li>
+          <li>3D modeling</li>
+          <li>Texturing</li>
+          <li>Camera systems</li>
+          <li>Transformations</li>
+          <li>GLEW / GLAD</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="contact">
+    <div class="wrap footer-inner">
+      <div class="footer-cta" data-reveal>
+        <p class="eyebrow">Contact</p>
+        <h2 class="footer-title">Let's talk.</h2>
+        <a href="mailto:you@example.com" class="footer-email">you@example.com</a>
+      </div>
+      <ul class="footer-links" aria-label="Elsewhere">
+        <li><a href="https://github.com/bmoreawesom3" target="_blank" rel="noopener">GitHub ↗</a></li>
+        <li><a href="#">LinkedIn ↗</a></li>
+        <li><a href="#">Résumé ↗</a></li>
+      </ul>
+    </div>
+    <div class="wrap footer-colophon">
+      <span>© <span id="year">2026</span> George Kaline III</span>
+      <span class="mono">Built from scratch · Hosted on GitHub Pages</span>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

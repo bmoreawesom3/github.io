@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Marks that JS is available, so content-reveal animations can run.
+       Without JS, content simply shows (see .js rules in style.css). -->
+  <script>document.documentElement.classList.add("js");</script>
+
+  <title>CS-465: Full Stack Development — George Kaline III</title>
+  <meta name="description" content="CS-465 Full Stack Development: Travlr Getaways, a MEAN-stack travel app with an Angular admin panel, a REST API, and JWT authentication." />
+
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" id="siteHeader">
+    <div class="wrap header-inner">
+      <a href="index.html" class="brand">
+        <span class="brand-mark" aria-hidden="true">◆</span>
+        <span class="brand-name">George Kaline III</span>
+      </a>
+      <nav class="nav" id="primaryNav" aria-label="Primary">
+        <a href="index.html#school" class="nav-link">School</a>
+        <a href="index.html#professional" class="nav-link">Professional</a>
+        <a href="index.html#about" class="nav-link">About</a>
+        <a href="index.html#contact" class="nav-link nav-link--cta">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-btn" id="themeToggle" type="button" aria-label="Switch to dark theme">
+          <span class="theme-icon" aria-hidden="true">☀</span>
+        </button>
+        <button class="icon-btn menu-btn" id="menuToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="primaryNav">
+          <span class="menu-bars" aria-hidden="true"><span></span><span></span><span></span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="detail-hero" id="top">
+      <div class="wrap">
+        <a href="index.html#school" class="back-link" data-reveal>← Back to portfolio</a>
+        <p class="eyebrow" data-reveal>School · Full Stack Development</p>
+        <h1 class="hero-title" data-reveal>CS-465: Full Stack Development</h1>
+        <p class="detail-lead" data-reveal>
+          "Travlr Getaways" — a full-stack MEAN travel-booking application, built
+          up module by module into a complete system with a customer-facing site,
+          a REST API, an Angular admin panel, and token-based authentication.
+        </p>
+
+        <dl class="detail-meta" data-reveal>
+          <div><dt>Course</dt><dd>CS-465 · Full Stack Development</dd></div>
+          <div><dt>Type</dt><dd>School project</dd></div>
+          <div><dt>Stack</dt><dd>MEAN (Mongo · Express · Angular · Node)</dd></div>
+          <div><dt>Final branch</dt><dd>module7</dd></div>
+          <div><dt>Year</dt><dd>2025</dd></div>
+          <div><dt>Repository</dt><dd><a href="https://github.com/bmoreawesom3/CS465" target="_blank" rel="noopener">GitHub ↗</a></dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap prose" data-reveal>
+        <p>
+          Travlr Getaways is a travel-booking site built on the MEAN stack. It's
+          organized into three tiers: a customer-facing web app served by Express
+          with Handlebars templating (<code>app_server</code>), a REST API backed
+          by MongoDB and Mongoose models (<code>app_api</code>), and a single-page
+          Angular admin application for staff to manage trips (<code>app_admin</code>).
+        </p>
+
+        <h3>Built across modules</h3>
+        <p>
+          <!-- EDIT ME if you'd describe the branch structure differently. -->
+          The repository is organized by module: branches <strong>module1</strong>
+          through <strong>module7</strong> each capture a stage of the build, so
+          the history of the application is visible branch by branch.
+          <strong>module7</strong> is the finished version, adding JWT
+          authentication with Passport to secure the administrative routes. The
+          <code>main</code> branch is intentionally minimal — the working code
+          lives on the module branches.
+        </p>
+
+        <h3>What I worked on</h3>
+        <ul class="bullets">
+          <li>Built the customer-facing site with Express and Handlebars server-side templating.</li>
+          <li>Designed a REST API with Express and MongoDB/Mongoose models for trips and users.</li>
+          <li>Created an Angular single-page admin panel to add, edit, and list trips.</li>
+          <li>Added JWT-based authentication with Passport to protect administrative routes.</li>
+          <li>Structured the work across seven module branches, ending with a complete application.</li>
+        </ul>
+
+        <h3>Reflection</h3>
+        <p>
+          <!-- EDIT ME: this repo had no reflection document, so add a few
+               sentences here from your course journal — what full-stack
+               architecture taught you, what was hardest, what you'd refine. -->
+          Add a short reflection here on building across the MEAN stack — how the
+          front end, API, and database fit together, and what securing the app
+          with authentication taught you.
+        </p>
+      </div>
+    </section>
+
+    <section class="section section--alt">
+      <div class="wrap">
+        <header class="section-head" data-reveal>
+          <p class="eyebrow">Artifacts</p>
+          <h2 class="section-title">Code &amp; deliverables</h2>
+          <p class="section-desc">Key parts of the finished application, on the <code>module7</code> branch.</p>
+        </header>
+        <div class="artifacts">
+          <a class="artifact" data-reveal href="https://github.com/bmoreawesom3/CS465/tree/module7" target="_blank" rel="noopener">
+            <span class="artifact-type">CODE</span>
+            <span><span class="artifact-name">module7 branch</span><span class="artifact-note">The complete Travlr Getaways application</span></span>
+            <span class="arrow" aria-hidden="true">↗</span>
+          </a>
+          <a class="artifact" data-reveal href="https://github.com/bmoreawesom3/CS465/tree/module7/app_admin" target="_blank" rel="noopener">
+            <span class="artifact-type">NG</span>
+            <span><span class="artifact-name">Angular admin app</span><span class="artifact-note">app_admin — add / edit / list trips</span></span>
+            <span class="arrow" aria-hidden="true">↗</span>
+          </a>
+          <a class="artifact" data-reveal href="https://github.com/bmoreawesom3/CS465/tree/module7/app_api" target="_blank" rel="noopener">
+            <span class="artifact-type">API</span>
+            <span><span class="artifact-name">REST API</span><span class="artifact-note">app_api — Express, MongoDB, JWT auth</span></span>
+            <span class="arrow" aria-hidden="true">↗</span>
+          </a>
+          <a class="artifact" data-reveal href="https://github.com/bmoreawesom3/CS465/tree/module7/app_server" target="_blank" rel="noopener">
+            <span class="artifact-type">WEB</span>
+            <span><span class="artifact-name">Express server &amp; views</span><span class="artifact-note">app_server — Handlebars customer site</span></span>
+            <span class="arrow" aria-hidden="true">↗</span>
+          </a>
+          <a class="artifact" data-reveal href="https://github.com/bmoreawesom3/CS465/branches" target="_blank" rel="noopener">
+            <span class="artifact-type">BR</span>
+            <span><span class="artifact-name">All module branches</span><span class="artifact-note">module1 – module7 build history</span></span>
+            <span class="arrow" aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap prose" data-reveal>
+        <h3>Skills &amp; concepts</h3>
+        <ul class="tags" aria-label="Skills" style="margin-top:1rem;">
+          <li>Angular</li>
+          <li>TypeScript</li>
+          <li>Node.js</li>
+          <li>Express</li>
+          <li>MongoDB</li>
+          <li>Mongoose</li>
+          <li>REST APIs</li>
+          <li>JWT / Passport</li>
+          <li>Handlebars</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="contact">
+    <div class="wrap footer-inner">
+      <div class="footer-cta" data-reveal>
+        <p class="eyebrow">Contact</p>
+        <h2 class="footer-title">Let's talk.</h2>
+        <a href="mailto:you@example.com" class="footer-email">you@example.com</a>
+      </div>
+      <ul class="footer-links" aria-label="Elsewhere">
+        <li><a href="https://github.com/bmoreawesom3" target="_blank" rel="noopener">GitHub ↗</a></li>
+        <li><a href="#">LinkedIn ↗</a></li>
+        <li><a href="#">Résumé ↗</a></li>
+      </ul>
+    </div>
+    <div class="wrap footer-colophon">
+      <span>© <span id="year">2026</span> George Kaline III</span>
+      <span class="mono">Built from scratch · Hosted on GitHub Pages</span>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

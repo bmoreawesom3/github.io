@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Marks that JS is available, so content-reveal animations can run.
+       Without JS, content simply shows (see .js rules in style.css). -->
+  <script>document.documentElement.classList.add("js");</script>
+
+  <title>CS-360: Mobile App Development — George Kaline III</title>
+  <meta name="description" content="CS-360 Mobile Architecture & Programming: a native Android weight-tracking app in Java with a SQLite database, login, weight logging, and goal notifications." />
+
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" id="siteHeader">
+    <div class="wrap header-inner">
+      <a href="index.html" class="brand">
+        <span class="brand-mark" aria-hidden="true">◆</span>
+        <span class="brand-name">George Kaline III</span>
+      </a>
+      <nav class="nav" id="primaryNav" aria-label="Primary">
+        <a href="index.html#school" class="nav-link">School</a>
+        <a href="index.html#professional" class="nav-link">Professional</a>
+        <a href="index.html#about" class="nav-link">About</a>
+        <a href="index.html#contact" class="nav-link nav-link--cta">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-btn" id="themeToggle" type="button" aria-label="Switch to dark theme">
+          <span class="theme-icon" aria-hidden="true">☀</span>
+        </button>
+        <button class="icon-btn menu-btn" id="menuToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="primaryNav">
+          <span class="menu-bars" aria-hidden="true"><span></span><span></span><span></span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="detail-hero" id="top">
+      <div class="wrap">
+        <a href="index.html#school" class="back-link" data-reveal>← Back to portfolio</a>
+        <p class="eyebrow" data-reveal>School · Mobile Development</p>
+        <h1 class="hero-title" data-reveal>CS-360: Mobile App Development</h1>
+        <p class="detail-lead" data-reveal>
+          A native Android weight-tracking app built in Java — user login backed by
+          a local SQLite database, a dashboard for logging and reviewing weight
+          entries, and goal notifications.
+        </p>
+
+        <dl class="detail-meta" data-reveal>
+          <div><dt>Course</dt><dd>CS-360 · Mobile Architecture &amp; Programming</dd></div>
+          <div><dt>Type</dt><dd>School project</dd></div>
+          <div><dt>Focus</dt><dd>Java · Android</dd></div>
+          <div><dt>Year</dt><dd>2024</dd></div>
+          <div><dt>Repository</dt><dd><a href="https://github.com/bmoreawesom3/cs360" target="_blank" rel="noopener">GitHub ↗</a></dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap prose" data-reveal>
+        <p>
+          This is a native Android application for tracking weight-loss progress.
+          It stores accounts and entries locally using a SQLite database, accessed
+          through a data-access layer so the UI stays separate from the storage
+          logic. The app is organized around a login screen and a set of fragment
+          screens for the home view, a dashboard, weight entry, and notifications.
+        </p>
+
+        <h3>What I built</h3>
+        <ul class="bullets">
+          <li>A login screen backed by a SQLite database for user accounts.</li>
+          <li>A data-access layer (DAO) and a User model separating storage from the UI.</li>
+          <li>A dashboard and weight-entry screen for logging and reviewing progress.</li>
+          <li>A notifications screen for goal-related alerts.</li>
+          <li>A fragment-based architecture following Android conventions.</li>
+        </ul>
+
+        <h3>Reflection</h3>
+        <p>
+          <!-- EDIT ME: this repo had no reflection document, so add a few
+               sentences from your course journal — designing for a real user,
+               working within Android's lifecycle, or handling data persistence. -->
+          Add a short reflection here on designing a mobile app for a real user's
+          needs — planning the UI, persisting data with SQLite, and working within
+          Android's activity and fragment lifecycle.
+        </p>
+      </div>
+    </section>
+
+    <section class="section section--alt">
+      <div class="wrap">
+        <header class="section-head" data-reveal>
+          <p class="eyebrow">Artifacts</p>
+          <h2 class="section-title">Code &amp; deliverables</h2>
+          <p class="section-desc">The complete Android Studio project.</p>
+        </header>
+        <div class="artifacts">
+          <a class="artifact" data-reveal href="https://github.com/bmoreawesom3/cs360/blob/main/Weighloss_Proj_3%20George_Kaline.zip" target="_blank" rel="noopener">
+            <span class="artifact-type">ZIP</span>
+            <span><span class="artifact-name">Weight-loss app project</span><span class="artifact-note">Full Android Studio project (Java + SQLite)</span></span>
+            <span class="arrow" aria-hidden="true">↗</span>
+          </a>
+          <a class="artifact" data-reveal href="https://github.com/bmoreawesom3/cs360" target="_blank" rel="noopener">
+            <span class="artifact-type">REPO</span>
+            <span><span class="artifact-name">Repository</span><span class="artifact-note">Project overview on GitHub</span></span>
+            <span class="arrow" aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap prose" data-reveal>
+        <h3>Skills &amp; concepts</h3>
+        <ul class="tags" aria-label="Skills" style="margin-top:1rem;">
+          <li>Java</li>
+          <li>Android SDK</li>
+          <li>SQLite</li>
+          <li>DAO pattern</li>
+          <li>Fragments</li>
+          <li>Mobile UI</li>
+          <li>Data persistence</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="contact">
+    <div class="wrap footer-inner">
+      <div class="footer-cta" data-reveal>
+        <p class="eyebrow">Contact</p>
+        <h2 class="footer-title">Let's talk.</h2>
+        <a href="mailto:you@example.com" class="footer-email">you@example.com</a>
+      </div>
+      <ul class="footer-links" aria-label="Elsewhere">
+        <li><a href="https://github.com/bmoreawesom3" target="_blank" rel="noopener">GitHub ↗</a></li>
+        <li><a href="#">LinkedIn ↗</a></li>
+        <li><a href="#">Résumé ↗</a></li>
+      </ul>
+    </div>
+    <div class="wrap footer-colophon">
+      <span>© <span id="year">2026</span> George Kaline III</span>
+      <span class="mono">Built from scratch · Hosted on GitHub Pages</span>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
