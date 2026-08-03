@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CS-470: Full Stack Development II — Your Name</title>
+  <meta name="description" content="CS-470 Full Stack Development II: migrating a full-stack application to a serverless, cloud-native architecture on AWS with Docker, Lambda, API Gateway, and DynamoDB." />
+
+  <!-- Favicon and shared assets live one level up (this page is in /projects) -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+
+  <!-- Same stylesheet as the home page (note the ../ because we're in /projects) -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Scoped styles for the responsive video embed (added). Theme-aware to match the site toggle. -->
+  <style>
+    .video-embed {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%; /* 16:9 */
+      height: 0;
+      overflow: hidden;
+      border-radius: 14px;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      background: #000;
+    }
+    [data-theme="dark"] .video-embed { border-color: rgba(255, 255, 255, 0.12); }
+    .video-embed iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Header links point back up to the home page's sections -->
+  <header class="site-header" id="siteHeader">
+    <div class="wrap header-inner">
+      <a href="../index.html" class="brand">
+        <span class="brand-mark" aria-hidden="true">◆</span>
+        <span class="brand-name">Your Name</span>
+      </a>
+      <nav class="nav" id="primaryNav" aria-label="Primary">
+        <a href="../index.html#school" class="nav-link">School</a>
+        <a href="../index.html#professional" class="nav-link">Professional</a>
+        <a href="../index.html#about" class="nav-link">About</a>
+        <a href="../index.html#contact" class="nav-link nav-link--cta">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-btn" id="themeToggle" type="button" aria-label="Switch to dark theme">
+          <span class="theme-icon" aria-hidden="true">☀</span>
+        </button>
+        <button class="icon-btn menu-btn" id="menuToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="primaryNav">
+          <span class="menu-bars" aria-hidden="true"><span></span><span></span><span></span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="detail-hero" id="top">
+      <div class="wrap">
+        <a href="index.html" class="back-link" data-reveal>← Back to portfolio</a>
+        <p class="eyebrow" data-reveal>School · Full-Stack Development</p>
+        <h1 class="hero-title" data-reveal>CS-470: Full Stack Development II</h1>
+        <p class="detail-lead" data-reveal>
+          Taking a full-stack application to the cloud — re-architecting a
+          container-based app into a serverless, cloud-native design on AWS, and
+          weighing the trade-offs between containers and serverless along the way.
+        </p>
+
+        <!-- EDIT ME: quick facts. Change the year, focus, etc. -->
+        <dl class="detail-meta" data-reveal>
+          <div><dt>Course</dt><dd>CS-470 · Full Stack Development II</dd></div>
+          <div><dt>Type</dt><dd>School project</dd></div>
+          <div><dt>Focus</dt><dd>AWS · Cloud &amp; serverless</dd></div>
+          <div><dt>Year</dt><dd>2025</dd></div>
+          <div><dt>Repository</dt><dd><a href="https://github.com/bmoreawesom3/CS470" target="_blank" rel="noopener">GitHub ↗</a></dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- OVERVIEW -->
+    <section class="section">
+      <div class="wrap prose" data-reveal>
+        <p>
+          <!-- EDIT ME: your own summary of the course/project. -->
+          This course focused on migrating a full-stack application to a
+          cloud-native architecture. The core work was moving from a Docker-based
+          deployment to managed AWS services — using Lambda for serverless
+          compute, API Gateway for the API layer, DynamoDB for NoSQL storage, and
+          S3 for hosting — while reasoning about cost, scaling, and reliability at
+          each step.
+        </p>
+
+        <h3>What I worked on</h3>
+        <ul class="bullets">
+          <li>Designed a cloud architecture on AWS using S3, Lambda, API Gateway, and DynamoDB.</li>
+          <li>Containerized the application with Docker before migrating to managed services.</li>
+          <li>Built serverless functions and REST APIs to replace server-based backend logic.</li>
+          <li>Modeled data in DynamoDB (NoSQL) and connected it to the API layer.</li>
+          <li>Integrated the frontend and backend into a complete, cloud-hosted solution.</li>
+          <li>Compared containers vs. serverless on cost predictability, scaling, and error isolation.</li>
+        </ul>
+
+        <h3>Reflection</h3>
+        <p>
+          <!-- EDIT ME: adjust to your own words / add specifics from the project. -->
+          This course sharpened my ability to design cloud architectures and to
+          judge when serverless is the right call versus containers. I came away
+          more confident integrating APIs, working with NoSQL data, and treating
+          scaling, cost, and failure isolation as first-class design concerns —
+          skills that map directly to roles like Cloud Developer, DevOps Engineer,
+          Full-Stack Developer, and Solutions Architect.
+        </p>
+      </div>
+    </section>
+
+    <!-- VIDEO (added) -->
+    <section class="section section--alt">
+      <div class="wrap">
+        <header class="section-head" data-reveal>
+          <p class="eyebrow">Video</p>
+          <h2 class="section-title">Final reflection</h2>
+          <p class="section-desc">A short walkthrough of the project and what I took away from the course.</p>
+        </header>
+
+        <div class="video-embed" data-reveal>
+          <iframe
+            src="https://www.youtube.com/embed/7Bh84dFaTEU"
+            title="CS-470 final reflection video"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- KEY TAKEAWAYS -->
+    <section class="section">
+      <div class="wrap prose" data-reveal>
+        <h3>Cloud &amp; serverless takeaways</h3>
+        <ul class="bullets">
+          <li><strong>Scaling &amp; error handling:</strong> Lambda scales automatically and keeps failures isolated to individual functions, so a microservice error stays contained to one component.</li>
+          <li><strong>Cost model:</strong> serverless is pay-per-execution, so cost tracks usage, while containers give more predictable costs for steady, consistent workloads.</li>
+          <li><strong>Elasticity &amp; pay-for-service:</strong> lets a business absorb variable or seasonal demand without over-provisioning, pilot new features cheaply, and align spend with real usage.</li>
+          <li><strong>Trade-offs of going serverless:</strong> you gain independent deployability, technology-choice freedom, and fine-grained scaling — at the cost of added system complexity, cold-start latency, and harder distributed debugging.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ARTIFACTS: links straight to the files in the repo -->
+    <section class="section section--alt">
+      <div class="wrap">
+        <header class="section-head" data-reveal>
+          <p class="eyebrow">Artifacts</p>
+          <h2 class="section-title">Files &amp; deliverables</h2>
+          <p class="section-desc">The reflection and supporting materials for this project, hosted in the repository.</p>
+        </header>
+
+        <div class="artifacts">
+          <a class="artifact" data-reveal href="https://github.com/bmoreawesom3/CS470/blob/main/CS470%20ReflectionGeorge%20Kaline%20III.pdf" target="_blank" rel="noopener">
+            <span class="artifact-type">PDF</span>
+            <span><span class="artifact-name">Final Reflection</span><span class="artifact-note">Skills learned, developer strengths, and planning for growth</span></span>
+            <span class="arrow" aria-hidden="true">↗</span>
+          </a>
+          <a class="artifact" data-reveal href="https://youtu.be/7Bh84dFaTEU" target="_blank" rel="noopener">
+            <span class="artifact-type">VIDEO</span>
+            <span><span class="artifact-name">Reflection Walkthrough</span><span class="artifact-note">Video summary of the project and course</span></span>
+            <span class="arrow" aria-hidden="true">↗</span>
+          </a>
+          <a class="artifact" data-reveal href="https://github.com/bmoreawesom3/CS470" target="_blank" rel="noopener">
+            <span class="artifact-type">REPO</span>
+            <span><span class="artifact-name">CS470 Repository</span><span class="artifact-note">Project files hosted on GitHub</span></span>
+            <span class="arrow" aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="section">
+      <div class="wrap prose" data-reveal>
+        <h3>Skills &amp; concepts</h3>
+        <ul class="tags" aria-label="Skills" style="margin-top:1rem;">
+          <li>AWS</li>
+          <li>AWS Lambda</li>
+          <li>S3</li>
+          <li>API Gateway</li>
+          <li>DynamoDB</li>
+          <li>Docker</li>
+          <li>Serverless</li>
+          <li>Microservices</li>
+          <li>REST APIs</li>
+          <li>NoSQL</li>
+          <li>Full-stack integration</li>
+          <li>Cloud architecture</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER (same as home) -->
+  <footer class="site-footer" id="contact">
+    <div class="wrap footer-inner">
+      <div class="footer-cta" data-reveal>
+        <p class="eyebrow">Contact</p>
+        <h2 class="footer-title">Let's talk.</h2>
+        <a href="mailto:you@example.com" class="footer-email">you@example.com</a>
+      </div>
+      <ul class="footer-links" aria-label="Elsewhere">
+        <li><a href="https://github.com/bmoreawesom3" target="_blank" rel="noopener">GitHub ↗</a></li>
+        <li><a href="#">LinkedIn ↗</a></li>
+        <li><a href="#">Résumé ↗</a></li>
+      </ul>
+    </div>
+    <div class="wrap footer-colophon">
+      <span>© <span id="year">2026</span> Your Name</span>
+      <span class="mono">Built from scratch · Hosted on GitHub Pages</span>
+    </div>
+  </footer>
+
+  <!-- Same script as home (note the ../) -->
+  <script src="main.js"></script>
+</body>
+</html>
