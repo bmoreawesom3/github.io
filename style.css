@@ -233,6 +233,32 @@ ul { margin: 0; padding: 0; list-style: none; }
 }
 .section-desc { margin-top: 1rem; color: var(--ink-soft); font-size: 1.1rem; }
 
+/* ---------- Collapsible sections ---------- */
+.section-head-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+.section-head-text { flex: 1; min-width: 0; }
+
+.section-toggle { flex-shrink: 0; }
+.section-toggle .chevron {
+  display: inline-block;
+  font-size: 1.1rem;
+  line-height: 1;
+  transition: transform 0.3s var(--ease);
+}
+.section-toggle[aria-expanded="false"] .chevron { transform: rotate(-90deg); }
+
+.section-panel {
+  display: grid;
+  grid-template-rows: 1fr;
+  transition: grid-template-rows 0.4s var(--ease);
+}
+.section-panel.is-collapsed { grid-template-rows: 0fr; }
+.section-panel-inner { overflow: hidden; min-height: 0; }
+
 /* ---------- Project grid + cards ---------- */
 .grid {
   display: grid;

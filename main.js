@@ -93,6 +93,21 @@
     reveals.forEach(function (el) { observer.observe(el); });
   }
 
+  /* ---------- Collapsible sections ---------- */
+  var sectionToggles = document.querySelectorAll(".section-toggle");
+  sectionToggles.forEach(function (btn) {
+    var panel = document.getElementById(btn.getAttribute("aria-controls"));
+    if (!panel) return;
+    btn.addEventListener("click", function () {
+      var expanded = btn.getAttribute("aria-expanded") === "true";
+      var label = btn.getAttribute("data-label") || "section";
+      btn.setAttribute("aria-expanded", String(!expanded));
+      btn.setAttribute("aria-label", (expanded ? "Expand " : "Collapse ") + label + " section");
+      panel.classList.toggle("is-collapsed", expanded);
+      panel.inert = expanded;
+    });
+  });
+
   /* ---------- Footer year ---------- */
   var year = document.getElementById("year");
   if (year) year.textContent = String(new Date().getFullYear());

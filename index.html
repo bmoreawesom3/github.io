@@ -40,6 +40,7 @@
       <nav class="nav" id="primaryNav" aria-label="Primary">
         <a href="#school" class="nav-link">School</a>
         <a href="#professional" class="nav-link">Professional</a>
+        <a href="#personal" class="nav-link">Personal</a>
         <a href="#about" class="nav-link">About</a>
         <a href="#contact" class="nav-link nav-link--cta">Contact</a>
       </nav>
@@ -87,8 +88,22 @@
     <section class="section" id="school">
       <div class="wrap">
         <header class="section-head" data-reveal>
-          <p class="eyebrow">School work</p>
-          <h2 class="section-title">Coursework &amp; academic projects</h2>
+          <div class="section-head-row">
+            <div class="section-head-text">
+              <p class="eyebrow">School work</p>
+              <h2 class="section-title">Coursework &amp; academic projects</h2>
+            </div>
+            <button
+              class="icon-btn section-toggle"
+              type="button"
+              aria-expanded="true"
+              aria-controls="school-panel"
+              aria-label="Collapse School work section"
+              data-label="School work"
+            >
+              <span class="chevron" aria-hidden="true">⌄</span>
+            </button>
+          </div>
           <p class="section-desc">
             Projects from classes, labs, and personal study. Swap this copy for
             a line about what you were learning or exploring.
@@ -121,9 +136,11 @@
           </ul>
         </header>
 
+        <div class="section-panel" id="school-panel">
+        <div class="section-panel-inner">
         <div class="grid">
           <!-- CARD (copy this whole <article> to add another project) -->
-          
+
           <article class="card" data-reveal>
             <a class="card-cover card-cover--school" href="cs-330.html" aria-label="Open CS-330 project page">
               <span class="card-id">S-01</span>
@@ -257,6 +274,8 @@
             </div>
           </article>
         </div>
+        </div>
+        </div>
       </div>
     </section>
 
@@ -267,14 +286,30 @@
     <section class="section section--alt" id="professional">
       <div class="wrap">
         <header class="section-head" data-reveal>
-          <p class="eyebrow">Professional work</p>
-          <h2 class="section-title">Work &amp; client projects</h2>
+          <div class="section-head-row">
+            <div class="section-head-text">
+              <p class="eyebrow">Professional work</p>
+              <h2 class="section-title">Work &amp; client projects</h2>
+            </div>
+            <button
+              class="icon-btn section-toggle"
+              type="button"
+              aria-expanded="true"
+              aria-controls="professional-panel"
+              aria-label="Collapse Professional work section"
+              data-label="Professional work"
+            >
+              <span class="chevron" aria-hidden="true">⌄</span>
+            </button>
+          </div>
           <p class="section-desc">
             Things you shipped on the job, freelance, or for real users. Note
             impact where you can — what changed because this existed.
           </p>
         </header>
 
+        <div class="section-panel" id="professional-panel">
+        <div class="section-panel-inner">
         <div class="grid">
           <article class="card" data-reveal>
             <a class="card-cover card-cover--pro" href="#" aria-label="Open project">
@@ -348,6 +383,117 @@
             </div>
           </article>
         </div>
+        </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         PERSONAL SECTION
+         Project IDs use N-01, N-02… (N = personal). More to come.
+         ============================================================ -->
+    <section class="section" id="personal">
+      <div class="wrap">
+        <header class="section-head" data-reveal>
+          <div class="section-head-row">
+            <div class="section-head-text">
+              <p class="eyebrow">Personal</p>
+              <h2 class="section-title">Personal projects</h2>
+            </div>
+            <button
+              class="icon-btn section-toggle"
+              type="button"
+              aria-expanded="true"
+              aria-controls="personal-panel"
+              aria-label="Collapse Personal section"
+              data-label="Personal"
+            >
+              <span class="chevron" aria-hidden="true">⌄</span>
+            </button>
+          </div>
+          <p class="section-desc">
+            Builds outside of work and school — PCs, cars, woodworking, the 3D
+            printer, and whatever else I'm tinkering with. More coming soon.
+          </p>
+        </header>
+
+        <div class="section-panel" id="personal-panel">
+        <div class="section-panel-inner">
+        <div class="grid">
+          <article class="card" data-reveal>
+            <a class="card-cover card-cover--pro" href="#" aria-label="Open project">
+              <span class="card-id">N-01</span>
+            </a>
+            <div class="card-body">
+              <h3 class="card-title">Project title</h3>
+              <p class="card-desc">
+                What you built, why you built it, and how it turned out. Swap
+                this in when the project's ready.
+              </p>
+              <ul class="tags" aria-label="Tech used">
+                <li>TypeScript</li>
+                <li>Node</li>
+                <li>PostgreSQL</li>
+              </ul>
+              <div class="card-foot">
+                <span class="card-meta">2026 · Personal</span>
+                <span class="card-links">
+                  <a href="#">Live ↗</a>
+                  <a href="#">Case study ↗</a>
+                </span>
+              </div>
+            </div>
+          </article>
+
+          <article class="card" data-reveal>
+            <a class="card-cover card-cover--pro" href="#" aria-label="Open project">
+              <span class="card-id">N-02</span>
+            </a>
+            <div class="card-body">
+              <h3 class="card-title">Project title</h3>
+              <p class="card-desc">
+                A feature, service, or product you contributed to. Focus on your
+                part and the result it drove.
+              </p>
+              <ul class="tags" aria-label="Tech used">
+                <li>Go</li>
+                <li>Docker</li>
+                <li>AWS</li>
+              </ul>
+              <div class="card-foot">
+                <span class="card-meta">2025 · Personal</span>
+                <span class="card-links">
+                  <a href="#">Live ↗</a>
+                </span>
+              </div>
+            </div>
+          </article>
+
+          <article class="card" data-reveal>
+            <a class="card-cover card-cover--pro" href="#" aria-label="Open project">
+              <span class="card-id">N-03</span>
+            </a>
+            <div class="card-body">
+              <h3 class="card-title">Project title</h3>
+              <p class="card-desc">
+                Round out the section with a third piece. A consistent shape
+                across cards makes the whole page feel considered.
+              </p>
+              <ul class="tags" aria-label="Tech used">
+                <li>Swift</li>
+                <li>iOS</li>
+              </ul>
+              <div class="card-foot">
+                <span class="card-meta">2024 · Personal</span>
+                <span class="card-links">
+                  <a href="#">App Store ↗</a>
+                </span>
+              </div>
+            </div>
+          </article>
+        </div>
+        </div>
+        </div>
       </div>
     </section>
 
@@ -357,21 +503,37 @@
     <section class="section" id="about">
       <div class="wrap about">
         <header class="section-head" data-reveal>
-          <p class="eyebrow">About</p>
-          <h2 class="section-title">A little about me</h2>
+          <div class="section-head-row">
+            <div class="section-head-text">
+              <p class="eyebrow">About</p>
+              <h2 class="section-title">A little about me</h2>
+            </div>
+            <button
+              class="icon-btn section-toggle"
+              type="button"
+              aria-expanded="true"
+              aria-controls="about-panel"
+              aria-label="Collapse About section"
+              data-label="About"
+            >
+              <span class="chevron" aria-hidden="true">⌄</span>
+            </button>
+          </div>
         </header>
+
+        <div class="section-panel" id="about-panel">
+        <div class="section-panel-inner">
         <div class="about-grid">
           <div class="about-text" data-reveal>
-              <p>
-                I started out at a drafting table and never quite stopped asking how to make the work easier. Nearly two decades in AEC, doing mechanical design across firms like AECOM, RS&H, and Pond, turned into a role I care about deeply. I'm a Practice Technology Specialist at Clark Nexsen, where I build the tools that make design teams faster and less frustrated.
-              </p>
-              <p>
-                That pull toward the "how" eventually sent me back to school. I recently finished a B.S. in Computer Software Engineering, and now I write Revit add-ins and automation using C#, the Revit API, and Dynamo, software that takes a tedious, error-prone task and just makes it disappear. I'm convinced AI is going to reshape how all of this gets done, and I'd rather be building at that edge than watching it happen.
-              </p>
-              <p>
-                The building doesn't stop when I close the laptop. I'm usually putting together PCs, soldering, woodworking, or under a car. Turns out tinkering and optimizing is just how I'm wired, in software and everything else.
-              </p>
-            </div>
+            <p>
+              I started out at a drafting table and never quite stopped asking how to make the work easier. Nearly two decades in AEC, doing mechanical design across firms like AECOM, RS&H, and Pond, turned into a role I care about deeply. I'm a Practice Technology Specialist at Clark Nexsen, where I build the tools that make design teams faster and less frustrated.
+            </p>
+            <p>
+              That pull toward the "how" eventually sent me back to school. I recently finished a B.S. in Computer Software Engineering, and now I write Revit add-ins and automation using C#, the Revit API, and Dynamo, software that takes a tedious, error-prone task and just makes it disappear. I'm convinced AI is going to reshape how all of this gets done, and I'd rather be building at that edge than watching it happen.
+            </p>
+            <p>
+              The building doesn't stop when I close the laptop. I'm usually putting together PCs, soldering, woodworking, or under a car. Turns out tinkering and optimizing is just how I'm wired, in software and everything else.
+            </p>
           </div>
           <aside class="about-facts" data-reveal>
             <dl>
@@ -380,6 +542,8 @@
               <div><dt>Studied</dt><dd>Computer Software Engineering</dd></div>
             </dl>
           </aside>
+        </div>
+        </div>
         </div>
       </div>
     </section>
