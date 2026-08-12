@@ -245,11 +245,15 @@ ul { margin: 0; padding: 0; list-style: none; }
 .section-toggle { flex-shrink: 0; }
 .section-toggle .chevron {
   display: inline-block;
-  font-size: 1.1rem;
-  line-height: 1;
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  border-radius: 1px;
+  transform: translateY(-2px) rotate(45deg);
   transition: transform 0.3s var(--ease);
 }
-.section-toggle[aria-expanded="false"] .chevron { transform: rotate(-90deg); }
+.section-toggle[aria-expanded="false"] .chevron { transform: translateY(0) rotate(-45deg); }
 
 .section-panel {
   display: grid;
