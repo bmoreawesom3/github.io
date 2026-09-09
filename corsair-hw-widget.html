@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Xeneon Edge HWiNFO Widgets — George Kaline III</title>
+  <meta name="description" content="Custom iCUE dashboard widgets for the Corsair Xeneon Edge display, powered by a local Python bridge that reads live HWiNFO64 sensor data." />
+
+  <!-- Favicon and shared assets -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Scoped styles for the widget screenshot gallery (added) -->
+  <style>
+    .shot-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: clamp(16px, 2.5vw, 24px);
+    }
+    @media (max-width: 640px) {
+      .shot-grid { grid-template-columns: 1fr; }
+    }
+    .shot-card {
+      margin: 0;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .shot-card figcaption {
+      padding: 12px 16px;
+      text-align: center;
+      background: var(--surface-2);
+      border-bottom: 1px solid var(--line);
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 0.95rem;
+      letter-spacing: 0.01em;
+      color: var(--ink);
+    }
+    .shot-card img {
+      width: 100%;
+      height: auto;
+      display: block;
+      background: #0e1013;
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" id="siteHeader">
+    <div class="wrap header-inner">
+      <a href="index.html" class="brand">
+        <span class="brand-mark" aria-hidden="true">◆</span>
+        <span class="brand-name">George Kaline III</span>
+      </a>
+      <nav class="nav" id="primaryNav" aria-label="Primary">
+        <a href="index.html#school" class="nav-link">School</a>
+        <a href="index.html#professional" class="nav-link">Professional</a>
+        <a href="index.html#personal" class="nav-link">Personal</a>
+        <a href="index.html#about" class="nav-link">About</a>
+        <a href="index.html#contact" class="nav-link nav-link--cta">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-btn" id="themeToggle" type="button" aria-label="Switch to dark theme">
+          <span class="theme-icon" aria-hidden="true">☀</span>
+        </button>
+        <button class="icon-btn menu-btn" id="menuToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="primaryNav">
+          <span class="menu-bars" aria-hidden="true"><span></span><span></span><span></span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="detail-hero" id="top">
+      <div class="wrap">
+        <a href="index.html#personal" class="back-link" data-reveal>← Back to portfolio</a>
+        <p class="eyebrow" data-reveal>Personal · Hardware monitoring</p>
+        <h1 class="hero-title" data-reveal>Xeneon Edge HWiNFO Widgets</h1>
+        <p class="detail-lead" data-reveal>
+          Custom iCUE dashboard widgets for the Corsair Xeneon Edge display,
+          bridging live HWiNFO64 sensor data into a set of clean, configurable
+          hardware monitors — no manual config-file editing required.
+        </p>
+
+        <dl class="detail-meta" data-reveal>
+          <div><dt>Type</dt><dd>Personal project</dd></div>
+          <div><dt>Focus</dt><dd>Hardware monitoring · Dashboard widgets</dd></div>
+          <div><dt>Stack</dt><dd>Python · JavaScript (ES modules) · HTML</dd></div>
+          <div><dt>Year</dt><dd>2026</dd></div>
+          <div><dt>Repository</dt><dd><a href="https://github.com/bmoreawesom3/corsair_HW_widget" target="_blank" rel="noopener">GitHub ↗</a></dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- SCREENSHOTS -->
+    <section class="section">
+      <div class="wrap">
+        <header class="section-head" data-reveal>
+          <p class="eyebrow">Screenshots</p>
+          <h2 class="section-title">The widgets on the display</h2>
+          <p class="section-desc">CPU, GPU, fan/pump, and RAM/storage monitors, each pulling live readings from HWiNFO64.</p>
+        </header>
+
+        <div class="shot-grid" data-reveal>
+          <figure class="shot-card">
+            <figcaption>CPU</figcaption>
+            <img src="https://raw.githubusercontent.com/bmoreawesom3/corsair_HW_widget/main/docs/screenshots/cpu-widget.png" alt="CPU widget showing frequency, voltage, power, and temperature" loading="lazy" />
+          </figure>
+          <figure class="shot-card">
+            <figcaption>GPU</figcaption>
+            <img src="https://raw.githubusercontent.com/bmoreawesom3/corsair_HW_widget/main/docs/screenshots/gpu-widget.png" alt="GPU widget showing fan RPM, VRAM usage, and clock speed" loading="lazy" />
+          </figure>
+          <figure class="shot-card">
+            <figcaption>Fans</figcaption>
+            <img src="https://raw.githubusercontent.com/bmoreawesom3/corsair_HW_widget/main/docs/screenshots/fan-widget.png" alt="Fan and pump widget showing four RPM bars" loading="lazy" />
+          </figure>
+          <figure class="shot-card">
+            <figcaption>RAM</figcaption>
+            <img src="https://raw.githubusercontent.com/bmoreawesom3/corsair_HW_widget/main/docs/screenshots/ram-widget.png" alt="RAM and storage widget showing memory usage and drive space" loading="lazy" />
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- OVERVIEW -->
+    <section class="section section--alt">
+      <div class="wrap prose" data-reveal>
+        <p>
+          I built this to get real hardware telemetry onto my Corsair Xeneon
+          Edge display instead of the generic stats iCUE ships with. HWiNFO64
+          already reads every sensor on the system, so rather than
+          re-implementing that, I wrote a small local service that exposes
+          HWiNFO's shared-memory data as JSON, then built widgets on top of it
+          that poll for live readings and render them on the display.
+        </p>
+
+        <h3>How it works</h3>
+        <ul class="bullets">
+          <li>HWiNFO64 reads hardware sensors via shared memory (<code>Global\HWiNFO_SENS_SM2</code>).</li>
+          <li>A Python bridge service (<code>server.py</code>) exposes that data as JSON over HTTP on <code>localhost:8228</code>.</li>
+          <li>Widget frontends (HTML/JS) poll the bridge and render live readings on the Xeneon Edge display.</li>
+          <li>Drive space monitoring reads directly from Windows system calls, independent of HWiNFO.</li>
+        </ul>
+
+        <h3>Widgets</h3>
+        <ul class="bullets">
+          <li><strong>CPU:</strong> frequency, core voltage, power draw, and VRM temperature, with two configurable load/temperature gauges.</li>
+          <li><strong>GPU:</strong> fan RPM and VRAM usage as gradient bars, plus clock speed — sensor selection favors the discrete GPU to avoid conflicts with integrated graphics.</li>
+          <li><strong>Fans/pumps:</strong> four independent RPM bars with freely-editable names, so generic HWiNFO labels can be replaced with real ones.</li>
+          <li><strong>RAM/storage:</strong> memory utilization as a gradient bar (percent and GB) plus two selectable drive-space bars.</li>
+        </ul>
+
+        <p>
+          Every sensor field in every widget is a dropdown populated from the
+          machine's own live hardware, so setup is point-and-select rather
+          than hand-editing config files. Each widget also supports color and
+          background customization and auto-scales its gauges to the sensor's
+          actual range.
+        </p>
+      </div>
+    </section>
+
+    <!-- ARTIFACTS -->
+    <section class="section">
+      <div class="wrap">
+        <header class="section-head" data-reveal>
+          <p class="eyebrow">Artifacts</p>
+          <h2 class="section-title">Files &amp; deliverables</h2>
+          <p class="section-desc">The source and packaged widgets, hosted in the repository.</p>
+        </header>
+
+        <div class="artifacts">
+          <a class="artifact" data-reveal href="https://github.com/bmoreawesom3/corsair_HW_widget" target="_blank" rel="noopener">
+            <span class="artifact-type">REPO</span>
+            <span><span class="artifact-name">corsair_HW_widget Repository</span><span class="artifact-note">Bridge service, widgets, and setup docs on GitHub</span></span>
+            <span class="arrow" aria-hidden="true">↗</span>
+          </a>
+          <a class="artifact" data-reveal href="https://github.com/bmoreawesom3/corsair_HW_widget#readme" target="_blank" rel="noopener">
+            <span class="artifact-type">DOCS</span>
+            <span><span class="artifact-name">Setup &amp; Troubleshooting</span><span class="artifact-note">Install steps, widget configuration, and common issues</span></span>
+            <span class="arrow" aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="section section--alt">
+      <div class="wrap prose" data-reveal>
+        <h3>Skills &amp; concepts</h3>
+        <ul class="tags" aria-label="Skills" style="margin-top:1rem;">
+          <li>Python</li>
+          <li>HTTP servers</li>
+          <li>JavaScript (ES modules)</li>
+          <li>Shared memory / IPC</li>
+          <li>Hardware monitoring</li>
+          <li>UI/widget design</li>
+          <li>Windows automation</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER (same as home) -->
+  <footer class="site-footer" id="contact">
+    <div class="wrap footer-inner">
+      <div class="footer-cta" data-reveal>
+        <p class="eyebrow">Contact</p>
+        <h2 class="footer-title">Let's talk.</h2>
+        <a href="mailto:gsk3rd@gmail.com" class="footer-email">gsk3rd@gmail.com</a>
+      </div>
+      <ul class="footer-links" aria-label="Elsewhere">
+        <li><a href="https://github.com/bmoreawesom3" target="_blank" rel="noopener">GitHub ↗</a></li>
+        <li><a href="https://www.linkedin.com/in/george-kaline/">LinkedIn ↗</a></li>
+      </ul>
+    </div>
+    <div class="wrap footer-colophon">
+      <span>© <span id="year">2026</span> George Kaline III</span>
+      <span class="mono">Built from scratch · Hosted on GitHub Pages</span>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
