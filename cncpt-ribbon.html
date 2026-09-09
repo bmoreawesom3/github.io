@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CNCPT Ribbon — George Kaline III</title>
+  <meta name="description" content="A Revit add-in that consolidates Clark Nexsen's production tools, standards links, and discipline automation into a single CNCPT ribbon tab." />
+
+  <!-- Favicon and shared assets -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Scoped styles for the top screenshot (added) -->
+  <style>
+    .shot-card {
+      margin: 0;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .shot-card img {
+      width: 100%;
+      height: auto;
+      display: block;
+      background: #0e1013;
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" id="siteHeader">
+    <div class="wrap header-inner">
+      <a href="index.html" class="brand">
+        <span class="brand-mark" aria-hidden="true">◆</span>
+        <span class="brand-name">George Kaline III</span>
+      </a>
+      <nav class="nav" id="primaryNav" aria-label="Primary">
+        <a href="index.html#school" class="nav-link">School</a>
+        <a href="index.html#professional" class="nav-link">Professional</a>
+        <a href="index.html#personal" class="nav-link">Personal</a>
+        <a href="index.html#about" class="nav-link">About</a>
+        <a href="index.html#contact" class="nav-link nav-link--cta">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <button class="icon-btn" id="themeToggle" type="button" aria-label="Switch to dark theme">
+          <span class="theme-icon" aria-hidden="true">☀</span>
+        </button>
+        <button class="icon-btn menu-btn" id="menuToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="primaryNav">
+          <span class="menu-bars" aria-hidden="true"><span></span><span></span><span></span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="detail-hero" id="top">
+      <div class="wrap">
+        <a href="index.html#professional" class="back-link" data-reveal>← Back to portfolio</a>
+        <p class="eyebrow" data-reveal>Professional · Revit add-in</p>
+        <h1 class="hero-title" data-reveal>CNCPT Ribbon</h1>
+        <p class="detail-lead" data-reveal>
+          A single Revit add-in that consolidates the tools, standards links,
+          and automation Clark Nexsen's design teams use daily — from clash
+          resolution and sheet automation to discipline-specific tools for
+          architecture, mechanical, electrical, and BIM management.
+        </p>
+
+        <dl class="detail-meta" data-reveal>
+          <div><dt>Type</dt><dd>Professional project</dd></div>
+          <div><dt>Focus</dt><dd>Revit automation · Production tooling</dd></div>
+          <div><dt>Stack</dt><dd>C# · .NET · WPF · Revit API · Dynamo</dd></div>
+          <div><dt>Year</dt><dd>2026</dd></div>
+          <div><dt>Repository</dt><dd><a href="https://github.com/bmoreawesom3/Revit-Addin" target="_blank" rel="noopener">GitHub ↗</a></dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- SCREENSHOT -->
+    <section class="section">
+      <div class="wrap">
+        <header class="section-head" data-reveal>
+          <p class="eyebrow">Screenshot</p>
+          <h2 class="section-title">The ribbon in Revit</h2>
+          <p class="section-desc">The CNCPT tab as it appears on the Revit ribbon, grouped into panels by purpose.</p>
+        </header>
+
+        <figure class="shot-card" data-reveal>
+          <img src="https://raw.githubusercontent.com/bmoreawesom3/Revit-Addin/main/Screenshot%202026-08-12%20095809.png" alt="CNCPT ribbon tab in Revit, showing the Resources, Utilities, Disciplines, and BIM Management panels" loading="lazy" />
+        </figure>
+      </div>
+    </section>
+
+    <!-- OVERVIEW (from README) -->
+    <section class="section section--alt">
+      <div class="wrap prose" data-reveal>
+        <p>
+          Everything lives under a single <strong>CNCPT</strong> ribbon tab,
+          organized into panels so the right tool is never more than a click
+          or a pulldown away. Tools range from one-off links to standards and
+          reference material, to full Dynamo- and C#-driven automation that
+          touches sheets, views, rooms, spaces, and discipline-specific
+          modeling tasks. In total the tab holds 70 tools: 22 in Resources,
+          22 in Utilities, 23 across the Disciplines panel, and 3 in BIM
+          Management.
+        </p>
+
+        <h3>Resources panel</h3>
+        <ul class="bullets">
+          <li><strong>Model Metrics</strong> — Opens the Model Metrics Dashboard hosted on BIMBeats.</li>
+          <li><strong>Project Creator</strong> — Copies a folder tree, renames RVTs (keeps the A01-style suffix), saves a new host, and relinks Revit links.</li>
+          <li><strong>Links pulldown</strong> — Cube, YouCube, the Revit Cubed playlist, Pinnacle, and the Autodesk website.</li>
+          <li><strong>Policies pulldown</strong> — BIM Job Captain responsibilities, the Clash Detection procedure, Revit Project Setup, and the Upgrading Projects policy.</li>
+          <li><strong>Requests pulldown</strong> — ACC License requests, Clarity setup, Family Creation (routed through Outlook), and Clash Detection setup requests.</li>
+          <li><strong>BIM Standards pulldown</strong> — Clark Nexsen BIM Standards, NCS, Navfac, AEC, Veterans Affairs, BCOM, and SCO standards.</li>
+        </ul>
+
+        <h3>Utilities panel</h3>
+        <ul class="bullets">
+          <li><strong>Clash Resolver</strong> — Imports a Navisworks XML clash report, reviews clash statuses, selects clashing elements in Revit, and exports the updated report.</li>
+          <li><strong>General pulldown</strong> — Export sheets impacted by revisions, create revision print sets, center all rooms/spaces/areas, rotate elements 90° about their own center, plus Dynamo scripts to generate views from a seed and delete views by phase.</li>
+          <li><strong>Sheet pulldown</strong> — Renumber viewports by titleblock grid or by position, bulk sheet creation, update sheet approve/design/review parameters, and show or hide crop regions across selected sheets.</li>
+          <li><strong>View pulldown</strong> — Make grid lines 2D in the current view; flip selected grid ends.</li>
+          <li><strong>Space pulldown</strong> — Center space tags, set the MEP space limit offset to 20', and delete unoccupied/redundant or all spaces.</li>
+          <li><strong>Room pulldown</strong> — Center room tags in view; delete rooms that aren't placed.</li>
+        </ul>
+
+        <h3>Disciplines panel</h3>
+        <ul class="bullets">
+          <li><strong>Architectural</strong> — A reference-links panel with live-thumbnail cards for codes and standards, an off-angle wall/grid finder, occupancy code schedule import from Excel, and door renumbering by room.</li>
+          <li><strong>Mechanical</strong> — Sizing guidelines, space-data export/import against Excel, air terminal placement and alignment to the ceiling grid, terminal and duct/pipe tagging, building-envelope HVAC takeoffs, duct/pipe modeling from equipment, duct length calculation, and insulation application by system type.</li>
+          <li><strong>Electrical</strong> — Voltage drop and feeder length calculation up the supply-from chain, MEP space limit offset via ray-casting to the ceiling or structure above, and lighting device alignment to the ceiling grid.</li>
+          <li><strong>Plumbing</strong> — Models piping connections directly from selected equipment.</li>
+          <li><strong>Fire Protection &amp; Structural</strong> — Reserved "Future Tool" placeholders, not yet implemented.</li>
+        </ul>
+
+        <h3>BIM Management panel</h3>
+        <p>Conditional — only visible to users on a whitelist checked at runtime.</p>
+        <ul class="bullets">
+          <li><strong>Revit File Report</strong> — Generates a detailed XML report per RVT file covering worksets, line styles/patterns, families &amp; types, levels, grids, phases, scope boxes, materials, and fill patterns.</li>
+          <li><strong>Report Dashboard</strong> — Loads generated reports in the browser to visualize and compare worksets, families, line styles, sheets, and materials across up to 8 files side by side.</li>
+          <li><strong>Gemini</strong> — Opens the AI Toolbox with Gemini login/access instructions.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ARTIFACTS -->
+    <section class="section">
+      <div class="wrap">
+        <header class="section-head" data-reveal>
+          <p class="eyebrow">Artifacts</p>
+          <h2 class="section-title">Files &amp; deliverables</h2>
+          <p class="section-desc">The source and full toolbar documentation, hosted in the repository.</p>
+        </header>
+
+        <div class="artifacts">
+          <a class="artifact" data-reveal href="https://github.com/bmoreawesom3/Revit-Addin" target="_blank" rel="noopener">
+            <span class="artifact-type">REPO</span>
+            <span><span class="artifact-name">Revit-Addin Repository</span><span class="artifact-note">Source and icon assets on GitHub</span></span>
+            <span class="arrow" aria-hidden="true">↗</span>
+          </a>
+          <a class="artifact" data-reveal href="https://github.com/bmoreawesom3/Revit-Addin#readme" target="_blank" rel="noopener">
+            <span class="artifact-type">DOCS</span>
+            <span><span class="artifact-name">Ribbon Toolbar Documentation</span><span class="artifact-note">Full catalog of every tool, grouped by panel and pulldown</span></span>
+            <span class="arrow" aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="section section--alt">
+      <div class="wrap prose" data-reveal>
+        <h3>Skills &amp; concepts</h3>
+        <ul class="tags" aria-label="Skills" style="margin-top:1rem;">
+          <li>C#</li>
+          <li>.NET</li>
+          <li>WPF</li>
+          <li>Revit API</li>
+          <li>Dynamo</li>
+          <li>Ribbon/UI design</li>
+          <li>XML reporting</li>
+          <li>Workflow automation</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER (same as home) -->
+  <footer class="site-footer" id="contact">
+    <div class="wrap footer-inner">
+      <div class="footer-cta" data-reveal>
+        <p class="eyebrow">Contact</p>
+        <h2 class="footer-title">Let's talk.</h2>
+        <a href="mailto:gsk3rd@gmail.com" class="footer-email">gsk3rd@gmail.com</a>
+      </div>
+      <ul class="footer-links" aria-label="Elsewhere">
+        <li><a href="https://github.com/bmoreawesom3" target="_blank" rel="noopener">GitHub ↗</a></li>
+        <li><a href="https://www.linkedin.com/in/george-kaline/">LinkedIn ↗</a></li>
+      </ul>
+    </div>
+    <div class="wrap footer-colophon">
+      <span>© <span id="year">2026</span> George Kaline III</span>
+      <span class="mono">Built from scratch · Hosted on GitHub Pages</span>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>
