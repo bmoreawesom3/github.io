@@ -1,45 +1,13 @@
 /* ============================================================
-   PORTFOLIO TEMPLATE — main.js
-   Handles: theme toggle · mobile menu · scroll reveal · footer year
+   style.css companion — main.js
+   Handles: mobile menu · scroll reveal · collapsible sections · footer year
    No dependencies. Everything degrades gracefully without JS.
    ============================================================ */
 
 (function () {
   "use strict";
 
-  var root = document.documentElement;
-
-  /* ---------- Theme (light / dark) ---------- */
-  var themeToggle = document.getElementById("themeToggle");
-
-  function applyTheme(theme) {
-    root.setAttribute("data-theme", theme);
-    if (themeToggle) {
-      var icon = themeToggle.querySelector(".theme-icon");
-      var isDark = theme === "dark";
-      if (icon) icon.textContent = isDark ? "☾" : "☀";
-      themeToggle.setAttribute(
-        "aria-label",
-        isDark ? "Switch to light theme" : "Switch to dark theme"
-      );
-    }
-  }
-
-  // Initial theme: saved choice → system preference → light
-  var saved = null;
-  try { saved = localStorage.getItem("theme"); } catch (e) {}
-  var systemDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-  applyTheme(saved || (systemDark ? "dark" : "light"));
-
-  if (themeToggle) {
-    themeToggle.addEventListener("click", function () {
-      var next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
-      applyTheme(next);
-      try { localStorage.setItem("theme", next); } catch (e) {}
-    });
-  }
-
-  /* ---------- Sticky header shadow on scroll ---------- */
+  /* ---------- Sticky header border on scroll ---------- */
   var header = document.getElementById("siteHeader");
   function onScroll() {
     if (!header) return;

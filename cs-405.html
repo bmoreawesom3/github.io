@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -11,46 +11,38 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
 
   <!-- Same stylesheet as the home page (note the ../ because we're in /projects) -->
   <link rel="stylesheet" href="style.css" />
 
-  <!-- Scoped styles for the diagram gallery (added). Theme-aware to match the site toggle. -->
+  <!-- Scoped styles for the diagram gallery (added). Uses the site's tokens from style.css. -->
   <style>
     .diagram {
       margin: 0 0 2rem;
-      border: 1px solid rgba(0, 0, 0, 0.1);
-      border-radius: 14px;
-      overflow: hidden;
-      background: #fff;
-    }
-    [data-theme="dark"] .diagram {
-      background: rgba(255, 255, 255, 0.03);
-      border-color: rgba(255, 255, 255, 0.12);
+      border: 1px solid var(--line);
+      background: var(--surface);
     }
     .diagram img {
       display: block;
       width: 100%;
       height: auto;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+      border-bottom: 1px solid var(--line);
     }
-    [data-theme="dark"] .diagram img { border-bottom-color: rgba(255, 255, 255, 0.1); }
     .diagram figcaption { padding: 1.25rem 1.5rem 1.5rem; }
     .diagram figcaption h3 {
-      font-family: "Space Grotesk", system-ui, sans-serif;
-      font-size: 1.15rem;
+      font-size: 1.05rem;
       margin: 0 0 0.5rem;
+      color: var(--ink);
     }
     .diagram figcaption p {
       margin: 0;
-      font-family: "Inter", system-ui, sans-serif;
       line-height: 1.6;
+      color: var(--ink-dim);
     }
     .diagram .file-tag {
-      font-family: "Space Mono", monospace;
       font-size: 0.75rem;
-      opacity: 0.7;
+      color: var(--ink-faint);
       display: inline-block;
       margin-top: 0.85rem;
     }
@@ -73,9 +65,6 @@
         <a href="../index.html#contact" class="nav-link nav-link--cta">Contact</a>
       </nav>
       <div class="header-actions">
-        <button class="icon-btn" id="themeToggle" type="button" aria-label="Switch to dark theme">
-          <span class="theme-icon" aria-hidden="true">☀</span>
-        </button>
         <button class="icon-btn menu-btn" id="menuToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="primaryNav">
           <span class="menu-bars" aria-hidden="true"><span></span><span></span><span></span></span>
         </button>
