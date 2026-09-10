@@ -4,6 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+  <!-- Marks that JS is available, so content-reveal animations can run.
+       Without JS, content simply shows (see .js rules in style.css). -->
+  <script>document.documentElement.classList.add("js");</script>
+
   <!-- ============================================================
        EDIT ME: page title + description (shows in browser tab &
        search results / link previews)
@@ -466,7 +470,7 @@
           <div class="section-head-row">
             <div class="section-head-text">
               <p class="eyebrow">About</p>
-              <h2 class="section-title">A little about me</h2>
+              <h2 class="section-title">Where I've been</h2>
             </div>
             <button
               class="icon-btn section-toggle"
@@ -483,25 +487,103 @@
 
         <div class="section-panel" id="about-panel">
         <div class="section-panel-inner">
-        <div class="about-grid">
-          <div class="about-text" data-reveal>
-            <p>
-              I started out at a drafting table and never quite stopped asking how to make the work easier. Nearly two decades in AEC, doing mechanical design across firms like AECOM, RS&H, and Pond, turned into a role I care about deeply. I'm a Practice Technology Specialist at Clark Nexsen, where I build the tools that make design teams faster and less frustrated.
-            </p>
-            <p>
-              That pull toward the "how" eventually sent me back to school. I recently finished a B.S. in Computer Software Engineering, and now I write Revit add-ins and automation using C#, the Revit API, and Dynamo, software that takes a tedious, error-prone task and just makes it disappear. I'm convinced AI is going to reshape how all of this gets done, and I'd rather be building at that edge than watching it happen.
-            </p>
-            <p>
-              The building doesn't stop when I close the laptop. I'm usually putting together PCs, soldering, woodworking, or under a car. Turns out tinkering and optimizing is just how I'm wired, in software and everything else.
-            </p>
-          </div>
-          <aside class="about-facts" data-reveal>
-            <dl>
-              <div><dt>Based in</dt><dd>Virginia Beach</dd></div>
-              <div><dt>Focus</dt><dd>AEC Software Developer</dd></div>
-              <div><dt>Studied</dt><dd>Computer Software Engineering</dd></div>
-            </dl>
-          </aside>
+        <div class="timeline-snake">
+          <ol class="timeline-row" data-reveal>
+            <li class="timeline-item">
+              <span class="timeline-dot" aria-hidden="true"></span>
+              <div class="timeline-body">
+                <p class="timeline-year">2000</p>
+                <p class="timeline-label">Started college at Tidewater Community College</p>
+              </div>
+            </li>
+            <li class="timeline-item">
+              <span class="timeline-dot" aria-hidden="true"></span>
+              <div class="timeline-body">
+                <p class="timeline-year">2002</p>
+                <p class="timeline-label">First job at a naval engineering company</p>
+              </div>
+            </li>
+            <li class="timeline-item">
+              <span class="timeline-dot" aria-hidden="true"></span>
+              <div class="timeline-body">
+                <p class="timeline-year">2006</p>
+                <p class="timeline-label">Started at AECOM</p>
+              </div>
+            </li>
+            <li class="timeline-item">
+              <span class="timeline-dot" aria-hidden="true"></span>
+              <div class="timeline-body">
+                <p class="timeline-year">2011</p>
+                <p class="timeline-label">Graduated with an Associate's in Drafting and Design</p>
+              </div>
+            </li>
+          </ol>
+
+          <div class="timeline-turn timeline-turn--right" aria-hidden="true"></div>
+
+          <ol class="timeline-row timeline-row--reverse" data-reveal>
+            <li class="timeline-item">
+              <span class="timeline-dot" aria-hidden="true"></span>
+              <div class="timeline-body">
+                <p class="timeline-year">2012</p>
+                <p class="timeline-label">Started at Transystems</p>
+              </div>
+            </li>
+            <li class="timeline-item">
+              <span class="timeline-dot" aria-hidden="true"></span>
+              <div class="timeline-body">
+                <p class="timeline-year">2013</p>
+                <p class="timeline-label">Started at RS&H</p>
+              </div>
+            </li>
+            <li class="timeline-item">
+              <span class="timeline-dot" aria-hidden="true"></span>
+              <div class="timeline-body">
+                <p class="timeline-year">2015</p>
+                <p class="timeline-label">Started at Pond</p>
+              </div>
+            </li>
+            <li class="timeline-item">
+              <span class="timeline-dot" aria-hidden="true"></span>
+              <div class="timeline-body">
+                <p class="timeline-year">2017</p>
+                <p class="timeline-label">Started at Clark Nexsen</p>
+              </div>
+            </li>
+          </ol>
+
+          <div class="timeline-turn timeline-turn--left" aria-hidden="true"></div>
+
+          <ol class="timeline-row" data-reveal>
+            <li class="timeline-item">
+              <span class="timeline-dot" aria-hidden="true"></span>
+              <div class="timeline-body">
+                <p class="timeline-year">2021</p>
+                <p class="timeline-label">Started a Bachelor's degree in Computer Science</p>
+              </div>
+            </li>
+            <li class="timeline-item">
+              <span class="timeline-dot" aria-hidden="true"></span>
+              <div class="timeline-body">
+                <p class="timeline-year">2022</p>
+                <p class="timeline-label">Promoted to Practice Technology Specialist</p>
+              </div>
+            </li>
+            <li class="timeline-item">
+              <span class="timeline-dot" aria-hidden="true"></span>
+              <div class="timeline-body">
+                <p class="timeline-year">2025</p>
+                <p class="timeline-label">Graduated with a Bachelor's degree</p>
+              </div>
+            </li>
+            <li class="timeline-item">
+              <span class="timeline-dot" aria-hidden="true"></span>
+              <div class="timeline-body">
+                <p class="timeline-year">2026</p>
+                <p class="timeline-label">Promoted to Senior Practice Technology Specialist</p>
+              </div>
+            </li>
+          </ol>
         </div>
         </div>
         </div>
