@@ -15,18 +15,57 @@
 
   <link rel="stylesheet" href="style.css" />
 
-  <!-- Scoped styles for the top screenshot (added) -->
+  <!-- Scoped styles for the interactive ribbon (added) -->
   <style>
-    .shot-card {
-      margin: 0;
-      background: var(--surface);
+    .rb-scroll { overflow-x: auto; padding-bottom: 8px; }
+    .rb-ribbon {
+      position: relative;
+      min-width: 900px;
+      max-width: 1374px;
+      margin: 0 auto;
+      background: #0e1013;
       border: 1px solid var(--line);
     }
-    .shot-card img {
-      width: 100%;
-      height: auto;
-      display: block;
-      background: #0e1013;
+    .rb-ribbon > img { display: block; width: 100%; height: auto; user-select: none; -webkit-user-drag: none; }
+
+    .rb-hotspot {
+      position: absolute; top: 17%; height: 76%;
+      background: transparent; border: 1px solid transparent;
+      cursor: pointer; padding: 0;
+      transition: background .12s, border-color .12s;
+    }
+    .rb-hotspot:hover { background: rgba(45,212,207,.12); border-color: rgba(45,212,207,.35); }
+    .rb-hotspot.active { background: rgba(45,212,207,.22); border-color: var(--accent); }
+    .rb-hotspot:focus-visible { outline: 2px solid var(--accent); }
+    .rb-ribbon.debug .rb-hotspot { border-color: #ffd400; background: rgba(255,212,0,.15); }
+
+    .rb-menu {
+      position: absolute; z-index: 10; top: 100%;
+      display: none; width: min(560px, 94vw);
+      background: var(--surface); border: 1px solid var(--line);
+      box-shadow: 0 10px 28px rgba(0,0,0,.55);
+    }
+    .rb-menu.open { display: flex; }
+    .rb-menu-list { flex: 0 0 230px; max-height: 340px; overflow-y: auto; border-right: 1px solid var(--line); padding: 4px 0; }
+    .rb-menu-list button {
+      display: block; width: 100%; text-align: left;
+      background: none; border: 0; color: var(--ink);
+      padding: 8px 14px; font: inherit; font-size: .85rem; cursor: pointer;
+    }
+    .rb-menu-list button:hover, .rb-menu-list button.sel { background: var(--accent); color: var(--accent-ink); }
+    .rb-menu-detail { flex: 1; padding: 14px 16px; max-height: 340px; overflow-y: auto; }
+    .rb-menu-detail h3 { margin: 0 0 6px; font-size: .95rem; color: var(--ink); }
+    .rb-menu-detail p { margin: 0; color: var(--ink-dim); font-size: .85rem; line-height: 1.55; }
+    .rb-menu-detail .rb-empty { color: var(--ink-faint); font-style: italic; }
+
+    .rb-card-wrap { margin: 18px 0 0; min-height: 90px; }
+    .rb-card { background: var(--surface); border: 1px solid var(--line); padding: 14px 18px; }
+    .rb-card h3 { margin: 0 0 6px; font-size: 1rem; color: var(--ink); }
+    .rb-card p { margin: 0; color: var(--ink-dim); line-height: 1.55; font-size: .9rem; }
+
+    @media (max-width: 600px) {
+      .rb-menu { flex-direction: column; }
+      .rb-menu-list { flex: none; max-height: 180px; border-right: 0; border-bottom: 1px solid var(--line); }
     }
   </style>
 </head>
@@ -78,71 +117,27 @@
       </div>
     </section>
 
-    <!-- SCREENSHOT -->
+    <!-- INTERACTIVE RIBBON -->
     <section class="section">
       <div class="wrap">
         <header class="section-head" data-reveal>
-          <p class="eyebrow">Screenshot</p>
-          <h2 class="section-title">The ribbon in Revit</h2>
-          <p class="section-desc">The CNCPT tab as it appears on the Revit ribbon, grouped into panels by purpose.</p>
+          <p class="eyebrow">Explore</p>
+          <h2 class="section-title">The ribbon, interactive</h2>
+          <p class="section-desc">
+            Click any button on the ribbon below. Pulldowns open a tool list —
+            click a tool to read what it does. 70 tools total: 22 in Resources,
+            22 in Utilities, 23 across Disciplines, and 3 in BIM Management
+            (visible only to whitelisted users).
+          </p>
         </header>
 
-        <figure class="shot-card" data-reveal>
-          <img src="https://raw.githubusercontent.com/bmoreawesom3/Revit-Addin/main/Screenshot%202026-08-12%20095809.png" alt="CNCPT ribbon tab in Revit, showing the Resources, Utilities, Disciplines, and BIM Management panels" loading="lazy" />
-        </figure>
-      </div>
-    </section>
+        <div class="rb-scroll" data-reveal>
+          <div class="rb-ribbon" id="rbRibbon">
+            <img src="ribbon.png" alt="CNCPT ribbon tab in Revit, showing the Resources, Utilities, Disciplines, and BIM Management panels">
+          </div>
+        </div>
 
-    <!-- OVERVIEW (from README) -->
-    <section class="section section--alt">
-      <div class="wrap prose" data-reveal>
-        <p>
-          Everything lives under a single <strong>CNCPT</strong> ribbon tab,
-          organized into panels so the right tool is never more than a click
-          or a pulldown away. Tools range from one-off links to standards and
-          reference material, to full Dynamo- and C#-driven automation that
-          touches sheets, views, rooms, spaces, and discipline-specific
-          modeling tasks. In total the tab holds 70 tools: 22 in Resources,
-          22 in Utilities, 23 across the Disciplines panel, and 3 in BIM
-          Management.
-        </p>
-
-        <h3>Resources panel</h3>
-        <ul class="bullets">
-          <li><strong>Model Metrics</strong> — Opens the Model Metrics Dashboard hosted on BIMBeats.</li>
-          <li><strong>Project Creator</strong> — Copies a folder tree, renames RVTs (keeps the A01-style suffix), saves a new host, and relinks Revit links.</li>
-          <li><strong>Links pulldown</strong> — Cube, YouCube, the Revit Cubed playlist, Pinnacle, and the Autodesk website.</li>
-          <li><strong>Policies pulldown</strong> — BIM Job Captain responsibilities, the Clash Detection procedure, Revit Project Setup, and the Upgrading Projects policy.</li>
-          <li><strong>Requests pulldown</strong> — ACC License requests, Clarity setup, Family Creation (routed through Outlook), and Clash Detection setup requests.</li>
-          <li><strong>BIM Standards pulldown</strong> — Clark Nexsen BIM Standards, NCS, Navfac, AEC, Veterans Affairs, BCOM, and SCO standards.</li>
-        </ul>
-
-        <h3>Utilities panel</h3>
-        <ul class="bullets">
-          <li><strong>Clash Resolver</strong> — Imports a Navisworks XML clash report, reviews clash statuses, selects clashing elements in Revit, and exports the updated report.</li>
-          <li><strong>General pulldown</strong> — Export sheets impacted by revisions, create revision print sets, center all rooms/spaces/areas, rotate elements 90° about their own center, plus Dynamo scripts to generate views from a seed and delete views by phase.</li>
-          <li><strong>Sheet pulldown</strong> — Renumber viewports by titleblock grid or by position, bulk sheet creation, update sheet approve/design/review parameters, and show or hide crop regions across selected sheets.</li>
-          <li><strong>View pulldown</strong> — Make grid lines 2D in the current view; flip selected grid ends.</li>
-          <li><strong>Space pulldown</strong> — Center space tags, set the MEP space limit offset to 20', and delete unoccupied/redundant or all spaces.</li>
-          <li><strong>Room pulldown</strong> — Center room tags in view; delete rooms that aren't placed.</li>
-        </ul>
-
-        <h3>Disciplines panel</h3>
-        <ul class="bullets">
-          <li><strong>Architectural</strong> — A reference-links panel with live-thumbnail cards for codes and standards, an off-angle wall/grid finder, occupancy code schedule import from Excel, and door renumbering by room.</li>
-          <li><strong>Mechanical</strong> — Sizing guidelines, space-data export/import against Excel, air terminal placement and alignment to the ceiling grid, terminal and duct/pipe tagging, building-envelope HVAC takeoffs, duct/pipe modeling from equipment, duct length calculation, and insulation application by system type.</li>
-          <li><strong>Electrical</strong> — Voltage drop and feeder length calculation up the supply-from chain, MEP space limit offset via ray-casting to the ceiling or structure above, and lighting device alignment to the ceiling grid.</li>
-          <li><strong>Plumbing</strong> — Models piping connections directly from selected equipment.</li>
-          <li><strong>Fire Protection &amp; Structural</strong> — Reserved "Future Tool" placeholders, not yet implemented.</li>
-        </ul>
-
-        <h3>BIM Management panel</h3>
-        <p>Conditional — only visible to users on a whitelist checked at runtime.</p>
-        <ul class="bullets">
-          <li><strong>Revit File Report</strong> — Generates a detailed XML report per RVT file covering worksets, line styles/patterns, families &amp; types, levels, grids, phases, scope boxes, materials, and fill patterns.</li>
-          <li><strong>Report Dashboard</strong> — Loads generated reports in the browser to visualize and compare worksets, families, line styles, sheets, and materials across up to 8 files side by side.</li>
-          <li><strong>Gemini</strong> — Opens the AI Toolbox with Gemini login/access instructions.</li>
-        </ul>
+        <div class="rb-card-wrap" id="rbCardWrap"></div>
       </div>
     </section>
 
@@ -208,5 +203,197 @@
   </footer>
 
   <script src="main.js"></script>
+  <script>
+  /* Interactive ribbon hotspots. x/w = button center and width in pixels
+     of the 1374px-wide ribbon.png. Add ?debug to the URL to see hotspot outlines. */
+  (function () {
+    const IMG_WIDTH = 1374;
+
+    const BUTTONS = [
+      // ---------- Resources ----------
+      { label: "Model Metrics", x: 24, w: 46,
+        summary: "Opens Model Metrics Dashboard hosted on BIMBeats." },
+      { label: "Project Creator", x: 70, w: 46,
+        summary: "Copies a folder tree, renames RVTs (keeps the A01-style suffix), saves a new host, and relinks Revit links." },
+      { label: "Links", x: 113, w: 36, items: [
+          { name: "Cube", summary: "Opens Cube." },
+          { name: "YouCube", summary: "Opens YouCube." },
+          { name: "Revit Cubed", summary: "Opens the playlist for Revit Cubed." },
+          { name: "Pinnacle", summary: "Opens Pinnacle." },
+          { name: "Autodesk Health", summary: "Opens the Autodesk website." } ] },
+      { label: "Policies", x: 162, w: 54, items: [
+          { name: "BIM Job Captain", summary: "Opens BIM Job Captain responsibilities." },
+          { name: "Clash Detection", summary: "Opens the Clash Detection procedure." },
+          { name: "Revit Project Setup", summary: "Opens the Revit project setup process." },
+          { name: "Upgrading Projects", summary: "Opens the upgrading-projects policy." } ] },
+      { label: "Requests", x: 224, w: 58, items: [
+          { name: "ACC License", summary: "Opens a link to the service request center to request an ACC License. Note: BIM360 has been rebranded to ACC (Autodesk Construction Cloud)." },
+          { name: "Clarity Setup", summary: "Opens a link to the service center to request Clarity setup." },
+          { name: "Family Creation", summary: "Requests a family to be created; the request is sent to the template group. Needs Outlook open to work properly." },
+          { name: "Clash Detection Setup", summary: "Opens a link to the service request center to request a clash detection setup." } ] },
+      { label: "BIM Standards", x: 293, w: 62, items: [
+          { name: "Clark Nexsen BIM Standards", summary: "Opens the Clark Nexsen BIM Standards." },
+          { name: "NCS", summary: "Opens the National CADD Standard." },
+          { name: "Navfac", summary: "Opens the Navfac standards." },
+          { name: "AEC", summary: "Opens the AEC standard." },
+          { name: "Veterans Affair", summary: "Opens the Veterans Affairs standard." },
+          { name: "BCOM", summary: "Opens the BCOM standard." },
+          { name: "SCO", summary: "Opens the Standard Construction Office: North Carolina standard." } ] },
+
+      // ---------- Utilities ----------
+      { label: "Clash Resolver", x: 358, w: 52,
+        summary: "Opens the Clash Resolver — import a Navisworks XML clash report, review statuses, select clashing elements in Revit, and export the updated report." },
+      { label: "General", x: 413, w: 52, items: [
+          { name: "Export Sheets Impacted by Revisions", summary: "Exports a list of sheets impacted by revisions to Excel (Date, Revision, Sheet number, Sheet name, Comments)." },
+          { name: "Create Revision Print Sets", summary: "Creates a named print set (sheet/view set) for each revision that has sheets, formatted as Revision Number — Revision Description. Existing print sets with matching names are deleted and recreated automatically." },
+          { name: "Center All Rooms, Spaces & Areas", summary: "Centers all rooms, spaces, and areas to their geometric center and centers the room, space, or area tag to that point." },
+          { name: "Rotate 90° About Center", summary: "Prompts you to select any modeled elements, then rotates each one 90° about its own bounding-box center (Z-axis) — no rotation point needed." },
+          { name: "View Sheet Seed", summary: "Dynamo script used to generate views from a seed view." },
+          { name: "Delete Views by Phase", summary: "Dynamo script that deletes views by a phase." } ] },
+      { label: "Sheet", x: 470, w: 46, items: [
+          { name: "Renumber Viewports by Grid", summary: "Renumbers all viewports on the active sheet using the titleblock grid pattern — columns A (left) to Z (right), rows 1 (bottom) to N (top); bottom-left cell is A1." },
+          { name: "Renumber VPs by Position", summary: "Renumbers all viewports on selected sheets using sequential integers, in your choice of four sort directions, based on each viewport's center-point position on the sheet." },
+          { name: "Sheet - Update Approve, Design, and Review", summary: "Dynamo script that updates the Approve, Design, and Review parameters." },
+          { name: "Bulk Sheet Creation", summary: "Dynamo script that creates sheets in bulk." },
+          { name: "Hide Crop Regions", summary: "Hides the crop region boundary on all viewports for selected sheets (or the current sheet only)." },
+          { name: "Show Crop Regions", summary: "Shows the crop region boundary on all viewports for selected sheets (or the current sheet only)." },
+          { name: "Graphic Scales Update - Gutter", summary: "Dynamo script that updates the graphic scales in the Gutter file. Requires the CN titleblock and CN gutter family." } ] },
+      { label: "View", x: 513, w: 40, items: [
+          { name: "Make Grids 2D in View", summary: "Makes all grid lines in the current view 2D (view-specific extents)." },
+          { name: "Flip Selected Grid Ends", summary: "Select grids in the view, then flip the grid end (bubble) to the other side." } ] },
+      { label: "Space", x: 560, w: 44, items: [
+          { name: "Center Space Tags in View", summary: "Selects all space tags in the current view and centers each tag in its space." },
+          { name: "Set Limit Offset to 20'", summary: "Sets the space limit offset to 20' for all MEP spaces in the model." },
+          { name: "Delete Unoccupied and Redundant", summary: "Deletes unoccupied (zero area) and redundant (duplicate number on same level) spaces, with a warning prompt." },
+          { name: "Delete All", summary: "Deletes all spaces in the model, with a warning prompt." } ] },
+      { label: "Room", x: 607, w: 44, items: [
+          { name: "Center Room Tags in View", summary: "Centers all room tags in the current view to their room center." },
+          { name: "Delete Rooms Not Placed", summary: "Deletes all rooms that are not placed in the model, with a warning prompt." } ] },
+
+      // ---------- Disciplines ----------
+      { label: "Architectural", x: 680, w: 84, items: [
+          { name: "Arch Reference Links", summary: "Opens the Architectural Reference Links panel — clickable preview cards with live website thumbnails for ICC Codes, WBDG, UFGS, UL Product IQ, PCI, BIA Technical Resources, NCMA TEK Solutions, Air Barrier Association, Steel Door Institute, Building Science Corp., and the CN Planning Guide 2022." },
+          { name: "Find Off-Angle Walls & Grids", summary: "Scans floor plan views for walls (straight only) and grid lines whose bearing isn't an integer number of degrees, highlights them purple, and shows a per-view summary report." },
+          { name: "Import Occupancy Code Schedule", summary: "Scans the network occupancy tables folder for Excel files, then clears and repopulates the \"Z-Reference (Schedule Key) - Building Code Occupancy Allowance\" key schedule with the imported data." },
+          { name: "Renumber Doors From Room", summary: "Renumbers door Mark parameters based on the room number they belong to, ordered clockwise from the room center. Supports multiple suffix formats for rooms with multiple doors." } ] },
+      { label: "Mechanical", x: 762, w: 76, items: [
+          { name: "Sizing Guidelines", summary: "Opens Mechanical Guidelines." },
+          { name: "Export Spaces to Excel", summary: "Exports all available space data to an Excel file in a folder you choose." },
+          { name: "Airflows from Excel to Spaces", summary: "Dynamo script that takes airflows from an Excel file and sends them to the spaces." },
+          { name: "Air Flows to Space", summary: "Dynamo tool that takes specified airflows from spaces and applies them to diffusers." },
+          { name: "Place Air Terminals", summary: "Places air terminals based on positions read from a linked model — pick a diffuser family type and select spaces by selection, view, or model. Detects existing terminals within 6\" and lets you skip or replace them." },
+          { name: "Align Air Terminals", summary: "Re-snaps existing air terminals to the linked ceiling tile grid. Terminals already on the grid, or more than 1.5 ft from any intersection, are left alone." },
+          { name: "Tag Air Terminals in View", summary: "Tags all air terminals in the current view using the default tag, offset to the right for readability." },
+          { name: "Tag Duct/Pipe in View", summary: "Tags all ductwork and pipe in the current view with the default tag, placed 1 foot above. Skips elements shorter than 5 feet." },
+          { name: "HVAC TakeOffs", summary: "Building-envelope takeoffs on the active floor plan: dimensions every exterior wall, tags all doors/windows hosted in exterior walls, and tags all visible spaces at the boundary centroid." },
+          { name: "Draw Duct and Pipe from Equipment", summary: "Selects all mechanical equipment visible in view and models out duct and pipe connections at 5 feet length." },
+          { name: "Calculate Duct Length", summary: "Select ductwork elements to calculate and display the total linear length in feet and inches." },
+          { name: "Apply Insulation", summary: "Applies insulation to ductwork and piping by system type, covering straight runs, fittings, and accessories, with an option to overwrite existing insulation." } ] },
+      { label: "Electrical", x: 833, w: 64, items: [
+          { name: "Voltage Drop & Feeder Lengths", summary: "Calculates voltage drop and feeder lengths for electrical equipment, writing circuit lengths to CN ElecEQ_Conductor Length and computing feeder and cumulative VD% up the supply-from chain." },
+          { name: "Set Space Limit Offset", summary: "Sets the Limit Offset on every placed MEP space by ray-casting upward to detect the ceiling or structure above, falling back to 15 ft for open/outdoor spaces." },
+          { name: "Align Lighting Devices", summary: "Re-snaps existing lighting fixtures and devices to the linked ceiling tile grid, using the same grid as Align Air Terminals." } ] },
+      { label: "Plumbing", x: 900, w: 64, items: [
+          { name: "Future Tool", summary: "Placeholder — not yet implemented." },
+          { name: "Model Piping from Equipment", summary: "Selects all mechanical equipment visible in view and models out piping connections at 5 feet length." } ] },
+      { label: "Fire Protection", x: 980, w: 92, items: [
+          { name: "Future Tool", summary: "Placeholder — not yet implemented." } ] },
+      { label: "Structural", x: 1065, w: 64, items: [
+          { name: "Future Tool", summary: "Placeholder — not yet implemented." } ] },
+
+      // ---------- BIM Management ----------
+      { label: "Revit File Report", x: 1150, w: 92,
+        summary: "Select one or more Revit (.rvt) files and generate a detailed XML report for each, covering worksets, line styles, line patterns, families & types, levels, grids, phases, scope boxes, materials, and fill patterns." },
+      { label: "Report Dashboard", x: 1247, w: 98,
+        summary: "Opens the Revit Report Dashboard in your default browser. Load the XML files generated by Revit File Report to visualize and compare worksets, families, line styles, sheets, and materials — supports up to 8 files side by side." },
+      { label: "Gemini", x: 1322, w: 46,
+        summary: "Opens the AI Toolbox with Gemini login/access instructions." },
+    ];
+
+    const ribbon = document.getElementById("rbRibbon");
+    const cardWrap = document.getElementById("rbCardWrap");
+    if (!ribbon || !cardWrap) return;
+    if (location.search.includes("debug")) ribbon.classList.add("debug");
+
+    let openMenu = null, activeSpot = null;
+
+    function closeMenu() {
+      if (openMenu) openMenu.remove();
+      if (activeSpot) activeSpot.classList.remove("active");
+      openMenu = activeSpot = null;
+    }
+
+    function showCard(btn) {
+      cardWrap.innerHTML = "";
+      const card = document.createElement("div");
+      card.className = "rb-card";
+      const h = document.createElement("h3"); h.textContent = btn.label;
+      const p = document.createElement("p"); p.textContent = btn.summary;
+      card.append(h, p);
+      cardWrap.append(card);
+    }
+
+    function buildMenu(btn, spot) {
+      const menu = document.createElement("div");
+      menu.className = "rb-menu open";
+
+      const list = document.createElement("div"); list.className = "rb-menu-list";
+      const detail = document.createElement("div"); detail.className = "rb-menu-detail";
+      detail.innerHTML = '<p class="rb-empty">Select a tool to see what it does.</p>';
+
+      btn.items.forEach(item => {
+        const b = document.createElement("button");
+        b.textContent = item.name;
+        b.addEventListener("click", e => {
+          e.stopPropagation();
+          list.querySelectorAll("button").forEach(x => x.classList.remove("sel"));
+          b.classList.add("sel");
+          detail.innerHTML = "";
+          const h = document.createElement("h3"); h.textContent = item.name;
+          const p = document.createElement("p"); p.textContent = item.summary;
+          detail.append(h, p);
+        });
+        list.append(b);
+      });
+
+      menu.append(list, detail);
+      menu.addEventListener("click", e => e.stopPropagation());
+
+      ribbon.append(menu);
+      const left = spot.offsetLeft;
+      const maxLeft = ribbon.clientWidth - menu.offsetWidth;
+      menu.style.left = Math.max(0, Math.min(left, maxLeft)) + "px";
+      menu.style.top = (spot.offsetTop + spot.offsetHeight + 2) + "px";
+      return menu;
+    }
+
+    BUTTONS.forEach(btn => {
+      const spot = document.createElement("button");
+      spot.className = "rb-hotspot";
+      spot.setAttribute("aria-label", btn.label);
+      spot.style.left = ((btn.x - btn.w / 2) / IMG_WIDTH * 100) + "%";
+      spot.style.width = (btn.w / IMG_WIDTH * 100) + "%";
+
+      spot.addEventListener("click", e => {
+        e.stopPropagation();
+        const wasThis = activeSpot === spot;
+        closeMenu();
+        if (btn.items) {
+          cardWrap.innerHTML = "";
+          if (wasThis) return;
+          spot.classList.add("active");
+          activeSpot = spot;
+          openMenu = buildMenu(btn, spot);
+        } else {
+          showCard(btn);
+        }
+      });
+      ribbon.append(spot);
+    });
+
+    document.addEventListener("click", closeMenu);
+    document.addEventListener("keydown", e => { if (e.key === "Escape") closeMenu(); });
+  })();
+  </script>
 </body>
 </html>
