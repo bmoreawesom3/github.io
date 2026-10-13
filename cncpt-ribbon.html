@@ -18,54 +18,74 @@
   <!-- Scoped styles for the interactive ribbon (added) -->
   <style>
     .rb-scroll { overflow-x: auto; padding-bottom: 8px; }
+    .rb-sizer { position: relative; }
     .rb-ribbon {
-      position: relative;
-      min-width: 900px;
-      max-width: 1374px;
-      margin: 0 auto;
-      background: #0e1013;
-      border: 1px solid var(--line);
+      position: absolute; left: 0; top: 0; width: 1159px; height: 108px;
+      background: #414955; transform-origin: 0 0; border-radius: 4px; box-shadow: 0 0 0 1px #000;
+      font: 11px "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+      letter-spacing: -0.1px; user-select: none; -webkit-user-select: none;
     }
-    .rb-ribbon > img { display: block; width: 100%; height: auto; user-select: none; -webkit-user-drag: none; }
+    .rb-tabs { position: absolute; left: 0; top: 0; right: 0; height: 22px; background: #2a2f3a; display: flex; }
+    .rb-tab { padding: 0 10px; line-height: 22px; color: #cfd4dc; white-space: nowrap; font-size: 11px; }
+    .rb-tab.rb-file { background: #3f749a; color: #fff; padding: 0 14px; }
+    .rb-tab.rb-active { background: #414955; color: #fff; }
 
-    .rb-hotspot {
-      position: absolute; top: 17%; height: 76%;
-      background: transparent; border: 1px solid transparent;
-      cursor: pointer; padding: 0;
-      transition: background .12s, border-color .12s;
+    .rb-sep { position: absolute; top: 28px; height: 66px; width: 1px; background: #4b5360; }
+    .rb-panel-label { position: absolute; top: 87px; text-align: center; color: #8b9098; font-size: 11px; line-height: 14px; transform: translateX(-50%); white-space: nowrap; }
+    .rb-panel-line { position: absolute; left: 0; right: 0; top: 100px; height: 8px; background: #3a414c; border-top: 1px solid #4d5562; }
+
+    .rb-btn {
+      position: absolute; top: 24px; height: 62px; padding: 0;
+      background: transparent; border: 1px solid transparent; border-radius: 2px;
+      color: #e6e9ee; font: inherit; cursor: pointer; text-align: center;
+      transition: background .1s, border-color .1s;
     }
-    .rb-hotspot:hover { background: rgba(45,212,207,.12); border-color: rgba(45,212,207,.35); }
-    .rb-hotspot.active { background: rgba(45,212,207,.22); border-color: var(--accent); }
-    .rb-hotspot:focus-visible { outline: 2px solid var(--accent); }
-    .rb-ribbon.debug .rb-hotspot { border-color: #ffd400; background: rgba(255,212,0,.15); }
+    .rb-btn:hover { background: rgba(255,255,255,.09); border-color: rgba(255,255,255,.16); }
+    .rb-btn.rb-active { background: rgba(255,255,255,.17); border-color: rgba(255,255,255,.28); }
+    .rb-btn:focus-visible { outline: 2px solid #3b8eea; outline-offset: 0; }
+    .rb-btn .rb-ic { position: absolute; left: 50%; top: -2px; width: 36px; height: 36px; margin-left: -18px; pointer-events: none; }
+    .rb-btn .rb-lbl { position: absolute; left: 0; right: 0; top: 31px; line-height: 14px; white-space: nowrap; pointer-events: none; }
+    .rb-btn .rb-arrow { position: absolute; left: 50%; margin-left: -3px; top: 48px; width: 0; height: 0; border: 3px solid transparent; border-top: 3.5px solid #d6dae0; border-bottom: 0; pointer-events: none; }
+    .rb-btn .rb-arrow.rb-side { left: auto; right: -6px; top: 44px; margin: 0; }
 
     .rb-menu {
-      position: absolute; z-index: 10; top: 100%;
-      display: none; width: min(560px, 94vw);
-      background: var(--surface); border: 1px solid var(--line);
-      box-shadow: 0 10px 28px rgba(0,0,0,.55);
+      position: absolute; z-index: 50; display: flex;
+      background: #3a414d; border: 1px solid #566071;
+      box-shadow: 0 12px 30px rgba(0,0,0,.6); border-radius: 3px;
+      width: min(640px, calc(100vw - 16px));
+      font: 11px "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
     }
-    .rb-menu.open { display: flex; }
-    .rb-menu-list { flex: 0 0 230px; max-height: 340px; overflow-y: auto; border-right: 1px solid var(--line); padding: 4px 0; }
+    .rb-menu-list { flex: 0 0 310px; max-height: 460px; overflow-y: auto; padding: 4px 0; border-right: 1px solid #566071; }
     .rb-menu-list button {
-      display: block; width: 100%; text-align: left;
-      background: none; border: 0; color: var(--ink);
-      padding: 8px 14px; font: inherit; font-size: .85rem; cursor: pointer;
+      display: flex; align-items: center; gap: 10px; width: 100%; text-align: left;
+      background: none; border: 0; color: #e9ecf0;
+      padding: 5px 14px 5px 10px; min-height: 34px; font: inherit; font-size: .9rem; cursor: pointer;
     }
-    .rb-menu-list button:hover, .rb-menu-list button.sel { background: var(--accent); color: var(--accent-ink); }
-    .rb-menu-detail { flex: 1; padding: 14px 16px; max-height: 340px; overflow-y: auto; }
-    .rb-menu-detail h3 { margin: 0 0 6px; font-size: .95rem; color: var(--ink); }
-    .rb-menu-detail p { margin: 0; color: var(--ink-dim); font-size: .85rem; line-height: 1.55; }
-    .rb-menu-detail .rb-empty { color: var(--ink-faint); font-style: italic; }
+    .rb-menu-list button img { flex: 0 0 26px; width: 26px; height: 26px; object-fit: contain; }
+    .rb-menu-list button:hover { background: rgba(255,255,255,.09); }
+    .rb-menu-list button.rb-sel { background: #3b8eea; color: #fff; }
+    .rb-menu-detail { flex: 1; padding: 16px 18px; background: #2c313b; max-height: 460px; overflow-y: auto; }
+    .rb-menu-detail .rb-head { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+    .rb-menu-detail .rb-head img { width: 40px; height: 40px; object-fit: contain; flex: 0 0 40px; }
+    .rb-menu-detail h3 { margin: 0; font-size: 1rem; font-weight: 600; line-height: 1.3; color: #e9ecf0; }
+    .rb-menu-detail p { margin: 0; color: #a8b0bd; font-size: .92rem; line-height: 1.55; }
+    .rb-menu-detail .rb-empty { font-style: italic; }
+    .rb-menu-detail .rb-shot { max-width: 100%; border-radius: 3px; margin-top: 12px; }
 
-    .rb-card-wrap { margin: 18px 0 0; min-height: 90px; }
-    .rb-card { background: var(--surface); border: 1px solid var(--line); padding: 14px 18px; }
-    .rb-card h3 { margin: 0 0 6px; font-size: 1rem; color: var(--ink); }
-    .rb-card p { margin: 0; color: var(--ink-dim); line-height: 1.55; font-size: .9rem; }
+    .rb-card-wrap {
+      margin-top: 18px; min-height: 96px;
+      font: 11px "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+    }
+    .rb-card { background: #3a414d; border: 1px solid #566071; border-radius: 4px; padding: 14px 18px; display: flex; gap: 14px; align-items: flex-start; }
+    .rb-card img { width: 40px; height: 40px; flex: 0 0 40px; }
+    .rb-card h3 { margin: 0 0 6px; font-size: 1rem; font-weight: 600; color: #e9ecf0; }
+    .rb-card p { margin: 0; color: #a8b0bd; line-height: 1.55; font-size: .92rem; }
+    .rb-card.rb-idle { background: transparent; border-style: dashed; color: #a8b0bd; display: block; }
 
-    @media (max-width: 600px) {
+    @media (max-width: 640px) {
       .rb-menu { flex-direction: column; }
-      .rb-menu-list { flex: none; max-height: 180px; border-right: 0; border-bottom: 1px solid var(--line); }
+      .rb-menu-list { flex: none; max-height: 230px; border-right: 0; border-bottom: 1px solid #566071; }
+      .rb-menu-detail { max-height: 190px; }
     }
   </style>
 </head>
@@ -131,9 +151,9 @@
           </p>
         </header>
 
-        <div class="rb-scroll" data-reveal>
-          <div class="rb-ribbon" id="rbRibbon">
-            <img src="ribbon.png" alt="CNCPT ribbon tab in Revit, showing the Resources, Utilities, Disciplines, and BIM Management panels">
+        <div class="rb-scroll" id="rbScroll" data-reveal>
+          <div class="rb-sizer" id="rbSizer">
+            <div class="rb-ribbon" id="rbRibbon" role="toolbar" aria-label="CNCPT add-in ribbon"></div>
           </div>
         </div>
 
@@ -203,35 +223,68 @@
   </footer>
 
   <script src="main.js"></script>
+  <script src="ribbon-icons.js"></script>
   <script>
-  /* Interactive ribbon hotspots. x/w = button center and width in pixels
-     of the 1374px-wide ribbon.png. Add ?debug to the URL to see hotspot outlines. */
+  /* Interactive ribbon — drawn as real HTML/CSS (not a screenshot), so the add-in icons stay
+     crisp at any size. Icons were cropped from the live add-in (ribbon-icons.js); tool
+     descriptions are sourced from the Revit-Addin repo README
+     (github.com/bmoreawesom3/Revit-Addin#readme). */
   (function () {
-    const IMG_WIDTH = 1374;
+    const DESIGN_W = 1159, DESIGN_H = 108;
+    const TABS = ["File","Architecture","Structure","Steel","Precast","Systems","Insert","Annotate","Analyze","Massing & Site","Collaborate","View","Manage","Add-Ins","CNCPT"];
+    const PANELS = [
+      { name: "Resources",      cx: 143,  sepAfter: 286 },
+      { name: "Utilities",      cx: 417,  sepAfter: 550 },
+      { name: "Disciplines",    cx: 750,  sepAfter: 950 },
+      { name: "BIM Management", cx: 1055, sepAfter: null },
+    ];
+    const LAYOUT = {
+      "Model Metrics":     { x: 21,   w: 40, lines: ["Model", "Metrics"] },
+      "Project Creator":   { x: 62,   w: 40, lines: ["Project", "Creator"] },
+      "Links":             { x: 98,   w: 36 },
+      "Policies":          { x: 141,  w: 44 },
+      "Requests":          { x: 194,  w: 50 },
+      "BIM Standards":     { x: 254,  w: 56, lines: ["BIM", "Standards"], side: true },
+      "Clash Resolver":    { x: 309,  w: 46, lines: ["Clash", "Resolver"] },
+      "General":           { x: 361,  w: 50 },
+      "Sheet":             { x: 404,  w: 40 },
+      "View":              { x: 443,  w: 36 },
+      "Space":             { x: 483,  w: 44 },
+      "Room":              { x: 525,  w: 40 },
+      "Architectural":     { x: 587,  w: 66 },
+      "Mechanical":        { x: 657,  w: 62 },
+      "Electrical":        { x: 719,  w: 54 },
+      "Plumbing":          { x: 778,  w: 56 },
+      "Fire Protection":   { x: 847,  w: 76 },
+      "Structural":        { x: 918,  w: 60 },
+      "Revit File Report": { x: 989,  w: 60, lines: ["Revit File", "Report"] },
+      "Report Dashboard":  { x: 1070, w: 60, lines: ["Report", "Dashboard"] },
+      "Gemini":            { x: 1131, w: 36 },
+    };
 
     const BUTTONS = [
       // ---------- Resources ----------
-      { label: "Model Metrics", x: 24, w: 46,
+      { label: "Model Metrics",
         summary: "Opens Model Metrics Dashboard hosted on BIMBeats." },
-      { label: "Project Creator", x: 70, w: 46,
+      { label: "Project Creator",
         summary: "Copies a folder tree, renames RVTs (keeps the A01-style suffix), saves a new host, and relinks Revit links." },
-      { label: "Links", x: 113, w: 36, items: [
+      { label: "Links", items: [
           { name: "Cube", summary: "Opens Cube." },
           { name: "YouCube", summary: "Opens YouCube." },
           { name: "Revit Cubed", summary: "Opens the playlist for Revit Cubed." },
           { name: "Pinnacle", summary: "Opens Pinnacle." },
           { name: "Autodesk Health", summary: "Opens the Autodesk website." } ] },
-      { label: "Policies", x: 162, w: 54, items: [
+      { label: "Policies", items: [
           { name: "BIM Job Captain", summary: "Opens BIM Job Captain responsibilities." },
           { name: "Clash Detection", summary: "Opens the Clash Detection procedure." },
           { name: "Revit Project Setup", summary: "Opens the Revit project setup process." },
           { name: "Upgrading Projects", summary: "Opens the upgrading-projects policy." } ] },
-      { label: "Requests", x: 224, w: 58, items: [
+      { label: "Requests", items: [
           { name: "ACC License", summary: "Opens a link to the service request center to request an ACC License. Note: BIM360 has been rebranded to ACC (Autodesk Construction Cloud)." },
           { name: "Clarity Setup", summary: "Opens a link to the service center to request Clarity setup." },
           { name: "Family Creation", summary: "Requests a family to be created; the request is sent to the template group. Needs Outlook open to work properly." },
           { name: "Clash Detection Setup", summary: "Opens a link to the service request center to request a clash detection setup." } ] },
-      { label: "BIM Standards", x: 293, w: 62, items: [
+      { label: "BIM Standards", items: [
           { name: "Clark Nexsen BIM Standards", summary: "Opens the Clark Nexsen BIM Standards." },
           { name: "NCS", summary: "Opens the National CADD Standard." },
           { name: "Navfac", summary: "Opens the Navfac standards." },
@@ -241,16 +294,16 @@
           { name: "SCO", summary: "Opens the Standard Construction Office: North Carolina standard." } ] },
 
       // ---------- Utilities ----------
-      { label: "Clash Resolver", x: 358, w: 52,
+      { label: "Clash Resolver",
         summary: "Opens the Clash Resolver — import a Navisworks XML clash report, review statuses, select clashing elements in Revit, and export the updated report." },
-      { label: "General", x: 413, w: 52, items: [
+      { label: "General", items: [
           { name: "Export Sheets Impacted by Revisions", summary: "Exports a list of sheets impacted by revisions to Excel (Date, Revision, Sheet number, Sheet name, Comments)." },
           { name: "Create Revision Print Sets", summary: "Creates a named print set (sheet/view set) for each revision that has sheets, formatted as Revision Number — Revision Description. Existing print sets with matching names are deleted and recreated automatically." },
           { name: "Center All Rooms, Spaces & Areas", summary: "Centers all rooms, spaces, and areas to their geometric center and centers the room, space, or area tag to that point." },
           { name: "Rotate 90° About Center", summary: "Prompts you to select any modeled elements, then rotates each one 90° about its own bounding-box center (Z-axis) — no rotation point needed." },
           { name: "View Sheet Seed", summary: "Dynamo script used to generate views from a seed view." },
           { name: "Delete Views by Phase", summary: "Dynamo script that deletes views by a phase." } ] },
-      { label: "Sheet", x: 470, w: 46, items: [
+      { label: "Sheet", items: [
           { name: "Renumber Viewports by Grid", summary: "Renumbers all viewports on the active sheet using the titleblock grid pattern — columns A (left) to Z (right), rows 1 (bottom) to N (top); bottom-left cell is A1." },
           { name: "Renumber VPs by Position", summary: "Renumbers all viewports on selected sheets using sequential integers, in your choice of four sort directions, based on each viewport's center-point position on the sheet." },
           { name: "Sheet - Update Approve, Design, and Review", summary: "Dynamo script that updates the Approve, Design, and Review parameters." },
@@ -258,25 +311,25 @@
           { name: "Hide Crop Regions", summary: "Hides the crop region boundary on all viewports for selected sheets (or the current sheet only)." },
           { name: "Show Crop Regions", summary: "Shows the crop region boundary on all viewports for selected sheets (or the current sheet only)." },
           { name: "Graphic Scales Update - Gutter", summary: "Dynamo script that updates the graphic scales in the Gutter file. Requires the CN titleblock and CN gutter family." } ] },
-      { label: "View", x: 513, w: 40, items: [
+      { label: "View", items: [
           { name: "Make Grids 2D in View", summary: "Makes all grid lines in the current view 2D (view-specific extents)." },
           { name: "Flip Selected Grid Ends", summary: "Select grids in the view, then flip the grid end (bubble) to the other side." } ] },
-      { label: "Space", x: 560, w: 44, items: [
+      { label: "Space", items: [
           { name: "Center Space Tags in View", summary: "Selects all space tags in the current view and centers each tag in its space." },
           { name: "Set Limit Offset to 20'", summary: "Sets the space limit offset to 20' for all MEP spaces in the model." },
           { name: "Delete Unoccupied and Redundant", summary: "Deletes unoccupied (zero area) and redundant (duplicate number on same level) spaces, with a warning prompt." },
           { name: "Delete All", summary: "Deletes all spaces in the model, with a warning prompt." } ] },
-      { label: "Room", x: 607, w: 44, items: [
+      { label: "Room", items: [
           { name: "Center Room Tags in View", summary: "Centers all room tags in the current view to their room center." },
           { name: "Delete Rooms Not Placed", summary: "Deletes all rooms that are not placed in the model, with a warning prompt." } ] },
 
       // ---------- Disciplines ----------
-      { label: "Architectural", x: 680, w: 84, items: [
+      { label: "Architectural", items: [
           { name: "Arch Reference Links", summary: "Opens the Architectural Reference Links panel — clickable preview cards with live website thumbnails for ICC Codes, WBDG, UFGS, UL Product IQ, PCI, BIA Technical Resources, NCMA TEK Solutions, Air Barrier Association, Steel Door Institute, Building Science Corp., and the CN Planning Guide 2022." },
           { name: "Find Off-Angle Walls & Grids", summary: "Scans floor plan views for walls (straight only) and grid lines whose bearing isn't an integer number of degrees, highlights them purple, and shows a per-view summary report." },
           { name: "Import Occupancy Code Schedule", summary: "Scans the network occupancy tables folder for Excel files, then clears and repopulates the \"Z-Reference (Schedule Key) - Building Code Occupancy Allowance\" key schedule with the imported data." },
           { name: "Renumber Doors From Room", summary: "Renumbers door Mark parameters based on the room number they belong to, ordered clockwise from the room center. Supports multiple suffix formats for rooms with multiple doors." } ] },
-      { label: "Mechanical", x: 762, w: 76, items: [
+      { label: "Mechanical", items: [
           { name: "Sizing Guidelines", summary: "Opens Mechanical Guidelines." },
           { name: "Export Spaces to Excel", summary: "Exports all available space data to an Excel file in a folder you choose." },
           { name: "Airflows from Excel to Spaces", summary: "Dynamo script that takes airflows from an Excel file and sends them to the spaces." },
@@ -289,111 +342,152 @@
           { name: "Draw Duct and Pipe from Equipment", summary: "Selects all mechanical equipment visible in view and models out duct and pipe connections at 5 feet length." },
           { name: "Calculate Duct Length", summary: "Select ductwork elements to calculate and display the total linear length in feet and inches." },
           { name: "Apply Insulation", summary: "Applies insulation to ductwork and piping by system type, covering straight runs, fittings, and accessories, with an option to overwrite existing insulation." } ] },
-      { label: "Electrical", x: 833, w: 64, items: [
+      { label: "Electrical", items: [
           { name: "Voltage Drop & Feeder Lengths", summary: "Calculates voltage drop and feeder lengths for electrical equipment, writing circuit lengths to CN ElecEQ_Conductor Length and computing feeder and cumulative VD% up the supply-from chain." },
           { name: "Set Space Limit Offset", summary: "Sets the Limit Offset on every placed MEP space by ray-casting upward to detect the ceiling or structure above, falling back to 15 ft for open/outdoor spaces." },
           { name: "Align Lighting Devices", summary: "Re-snaps existing lighting fixtures and devices to the linked ceiling tile grid, using the same grid as Align Air Terminals." } ] },
-      { label: "Plumbing", x: 900, w: 64, items: [
+      { label: "Plumbing", items: [
           { name: "Future Tool", summary: "Placeholder — not yet implemented." },
           { name: "Model Piping from Equipment", summary: "Selects all mechanical equipment visible in view and models out piping connections at 5 feet length." } ] },
-      { label: "Fire Protection", x: 980, w: 92, items: [
+      { label: "Fire Protection", items: [
           { name: "Future Tool", summary: "Placeholder — not yet implemented." } ] },
-      { label: "Structural", x: 1065, w: 64, items: [
+      { label: "Structural", items: [
           { name: "Future Tool", summary: "Placeholder — not yet implemented." } ] },
 
       // ---------- BIM Management ----------
-      { label: "Revit File Report", x: 1150, w: 92,
+      { label: "Revit File Report",
         summary: "Select one or more Revit (.rvt) files and generate a detailed XML report for each, covering worksets, line styles, line patterns, families & types, levels, grids, phases, scope boxes, materials, and fill patterns." },
-      { label: "Report Dashboard", x: 1247, w: 98,
+      { label: "Report Dashboard",
         summary: "Opens the Revit Report Dashboard in your default browser. Load the XML files generated by Revit File Report to visualize and compare worksets, families, line styles, sheets, and materials — supports up to 8 files side by side." },
-      { label: "Gemini", x: 1322, w: 46,
+      { label: "Gemini",
         summary: "Opens the AI Toolbox with Gemini login/access instructions." },
     ];
 
-    const ribbon = document.getElementById("rbRibbon");
+    const ICONS = window.CNCPT_ICONS;
+
+    const scroller = document.getElementById("rbScroll");
+    const sizer    = document.getElementById("rbSizer");
+    const ribbon   = document.getElementById("rbRibbon");
     const cardWrap = document.getElementById("rbCardWrap");
     if (!ribbon || !cardWrap) return;
-    if (location.search.includes("debug")) ribbon.classList.add("debug");
 
-    let openMenu = null, activeSpot = null;
+    /* ---------- draw the ribbon chrome (tabs, panel labels, divider lines) ---------- */
+    (function drawChrome() {
+      const tabs = document.createElement("div"); tabs.className = "rb-tabs";
+      TABS.forEach(t => {
+        const d = document.createElement("div");
+        d.className = "rb-tab" + (t === "File" ? " rb-file" : "") + (t === "CNCPT" ? " rb-active" : "");
+        d.textContent = t; tabs.append(d);
+      });
+      ribbon.append(tabs);
+      const line = document.createElement("div"); line.className = "rb-panel-line"; ribbon.append(line);
+      PANELS.forEach(p => {
+        const l = document.createElement("div"); l.className = "rb-panel-label"; l.textContent = p.name; l.style.left = p.cx + "px";
+        ribbon.append(l);
+        if (p.sepAfter) { const s = document.createElement("div"); s.className = "rb-sep"; s.style.left = p.sepAfter + "px"; ribbon.append(s); }
+      });
+    })();
 
+    let openMenu = null, activeBtn = null;
     function closeMenu() {
       if (openMenu) openMenu.remove();
-      if (activeSpot) activeSpot.classList.remove("active");
-      openMenu = activeSpot = null;
+      if (activeBtn) activeBtn.classList.remove("rb-active");
+      openMenu = activeBtn = null;
     }
+
+    function idleCard() { cardWrap.innerHTML = '<div class="rb-card rb-idle">Click a button above to see what it does.</div>'; }
 
     function showCard(btn) {
       cardWrap.innerHTML = "";
-      const card = document.createElement("div");
-      card.className = "rb-card";
+      const card = document.createElement("div"); card.className = "rb-card";
+      const im = document.createElement("img"); im.src = ICONS.ribbon[btn.label] || ""; im.alt = "";
+      const box = document.createElement("div");
       const h = document.createElement("h3"); h.textContent = btn.label;
-      const p = document.createElement("p"); p.textContent = btn.summary;
-      card.append(h, p);
-      cardWrap.append(card);
+      const p = document.createElement("p");  p.textContent = btn.summary;
+      box.append(h, p); card.append(im, box); cardWrap.append(card);
     }
 
-    function buildMenu(btn, spot) {
-      const menu = document.createElement("div");
-      menu.className = "rb-menu open";
-
-      const list = document.createElement("div"); list.className = "rb-menu-list";
+    function buildMenu(btn, anchor) {
+      const menu = document.createElement("div"); menu.className = "rb-menu";
+      menu.addEventListener("click", e => e.stopPropagation());
+      const list = document.createElement("div");   list.className = "rb-menu-list";
       const detail = document.createElement("div"); detail.className = "rb-menu-detail";
       detail.innerHTML = '<p class="rb-empty">Select a tool to see what it does.</p>';
+      const icons = ICONS.menu[btn.label] || [];
 
-      btn.items.forEach(item => {
+      btn.items.forEach((item, i) => {
         const b = document.createElement("button");
-        b.textContent = item.name;
-        b.addEventListener("click", e => {
-          e.stopPropagation();
-          list.querySelectorAll("button").forEach(x => x.classList.remove("sel"));
-          b.classList.add("sel");
+        if (icons[i]) { const im = document.createElement("img"); im.src = icons[i]; im.alt = ""; b.append(im); }
+        b.append(document.createTextNode(item.name));
+        b.addEventListener("click", () => {
+          list.querySelectorAll("button").forEach(x => x.classList.remove("rb-sel"));
+          b.classList.add("rb-sel");
           detail.innerHTML = "";
-          const h = document.createElement("h3"); h.textContent = item.name;
+          const head = document.createElement("div"); head.className = "rb-head";
+          if (icons[i]) { const im = document.createElement("img"); im.src = icons[i]; im.alt = ""; head.append(im); }
+          const h = document.createElement("h3"); h.textContent = item.name; head.append(h);
           const p = document.createElement("p"); p.textContent = item.summary;
-          detail.append(h, p);
+          detail.append(head, p);
+          if (item.image) { const s = document.createElement("img"); s.className = "rb-shot"; s.src = item.image; s.alt = item.name; detail.append(s); }
         });
         list.append(b);
       });
-
       menu.append(list, detail);
-      menu.addEventListener("click", e => e.stopPropagation());
+      document.body.append(menu);
 
-      ribbon.append(menu);
-      const left = spot.offsetLeft;
-      const maxLeft = ribbon.clientWidth - menu.offsetWidth;
-      menu.style.left = Math.max(0, Math.min(left, maxLeft)) + "px";
-      menu.style.top = (spot.offsetTop + spot.offsetHeight + 2) + "px";
+      const r = anchor.getBoundingClientRect();
+      const left = Math.max(8, Math.min(r.left + window.scrollX, window.scrollX + document.documentElement.clientWidth - menu.offsetWidth - 8));
+      menu.style.left = left + "px";
+      menu.style.top  = (r.bottom + window.scrollY + 2) + "px";
       return menu;
     }
 
     BUTTONS.forEach(btn => {
-      const spot = document.createElement("button");
-      spot.className = "rb-hotspot";
-      spot.setAttribute("aria-label", btn.label);
-      spot.style.left = ((btn.x - btn.w / 2) / IMG_WIDTH * 100) + "%";
-      spot.style.width = (btn.w / IMG_WIDTH * 100) + "%";
+      const L = LAYOUT[btn.label];
+      const el = document.createElement("button");
+      el.className = "rb-btn"; el.setAttribute("aria-label", btn.label);
+      el.style.left = (L.x - L.w / 2) + "px"; el.style.width = L.w + "px";
 
-      spot.addEventListener("click", e => {
+      const im = document.createElement("img"); im.className = "rb-ic"; im.alt = ""; im.src = ICONS.ribbon[btn.label] || "";
+      const lbl = document.createElement("span"); lbl.className = "rb-lbl";
+      (L.lines || [btn.label]).forEach((t, i) => { if (i) lbl.append(document.createElement("br")); lbl.append(document.createTextNode(t)); });
+      el.append(im, lbl);
+      if (btn.items) {
+        const a = document.createElement("span"); a.className = "rb-arrow" + (L.side ? " rb-side" : "");
+        el.append(a);
+      }
+
+      el.addEventListener("click", e => {
         e.stopPropagation();
-        const wasThis = activeSpot === spot;
+        const wasThis = activeBtn === el;
         closeMenu();
         if (btn.items) {
-          cardWrap.innerHTML = "";
+          idleCard();
           if (wasThis) return;
-          spot.classList.add("active");
-          activeSpot = spot;
-          openMenu = buildMenu(btn, spot);
-        } else {
-          showCard(btn);
-        }
+          el.classList.add("rb-active"); activeBtn = el;
+          openMenu = buildMenu(btn, el);
+        } else { showCard(btn); }
       });
-      ribbon.append(spot);
+      ribbon.append(el);
     });
 
+    /* ---------- scale the ribbon to fit the page width ---------- */
+    function fit() {
+      closeMenu();
+      const avail = scroller.parentElement.clientWidth;
+      const k = Math.max(0.8, Math.min(avail / DESIGN_W, 1.6));
+      ribbon.style.transform = "scale(" + k + ")";
+      sizer.style.width  = (DESIGN_W * k) + "px";
+      sizer.style.height = (DESIGN_H * k) + "px";
+    }
+    fit();
+    idleCard();
+    window.addEventListener("resize", fit);
     document.addEventListener("click", closeMenu);
     document.addEventListener("keydown", e => { if (e.key === "Escape") closeMenu(); });
+    scroller.addEventListener("scroll", closeMenu);
   })();
+
   </script>
 </body>
 </html>
